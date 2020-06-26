@@ -27,7 +27,7 @@ public class ProfileData {
     private String email;
     @SerializedName("btc_address")
     @Expose
-    private Object btcAddress;
+    private String btcAddress;
     @SerializedName("ethereum")
     @Expose
     private Object ethereum;
@@ -121,11 +121,11 @@ public class ProfileData {
         this.email = email;
     }
 
-    public Object getBtcAddress() {
+    public String getBtcAddress() {
         return btcAddress;
     }
 
-    public void setBtcAddress(Object btcAddress) {
+    public void setBtcAddress(String btcAddress) {
         this.btcAddress = btcAddress;
     }
 
