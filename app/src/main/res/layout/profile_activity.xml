@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="40dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/basicCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="#81db7b"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_below="@id/basicText"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                       <View
+                           android:layout_width="match_parent"
+                           android:layout_height="30dp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="User ID"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="20dp"
+                                android:textSize="18sp"
+                                android:textColor="#146366"
+                                android:fontFamily="@font/amazon_bold"
+                                />
+                            <TextView
+                                android:id="@+id/tvUserId"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="User ID"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="20dp"
+                                android:textSize="16sp"
+                                android:textColor="#146366"
+                                />
+                        </LinearLayout>
+
+                        <view
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="#146366"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Full Name"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="20dp"
+                                android:textSize="18sp"
+                                android:textColor="#146366"
+                                android:fontFamily="@font/amazon_bold"
+                                />
+                            <TextView
+                                android:id="@+id/tvFullName"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="User ID"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="20dp"
+                                android:textSize="16sp"
+                                android:textColor="#146366"
+                                />
+                        </LinearLayout>
+                        <view
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="#146366"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Sponsor Id"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="20dp"
+                                android:textSize="18sp"
+                                android:textColor="#146366"
+                                android:fontFamily="@font/amazon_bold"
+                                />
+                            <TextView
+                                android:id="@+id/tvSponserId"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="User ID"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="20dp"
+                                android:textSize="16sp"
+                                android:textColor="#146366"
+                                />
+                        </LinearLayout>
+                        <view
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="#146366"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Sponsor Name"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="20dp"
+                                android:textSize="18sp"
+                                android:textColor="#146366"
+                                android:fontFamily="@font/amazon_bold"
+                                />
+
+                            <TextView
+                                android:id="@+id/tvSponserName"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="User ID"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="20dp"
+                                android:textSize="16sp"
+                                android:textColor="#146366"
+                                />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/basicText"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    app:cardBackgroundColor="#1a776d"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginBottom="-15dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/white"
+                            android:text="Basic Information">
+
+                        </TextView>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="40dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/ContectCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="#81db7b"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_below="@id/contectText"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                       <View
+                           android:layout_width="match_parent"
+                           android:layout_height="30dp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Phone"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="20dp"
+                                android:textSize="18sp"
+                                android:textColor="#146366"
+                                android:fontFamily="@font/amazon_bold"
+                                />
+                            <TextView
+                                android:id="@+id/tvPhone"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="User ID"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="20dp"
+                                android:textSize="16sp"
+                                android:textColor="#146366"
+                                />
+                        </LinearLayout>
+
+                        <view
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="#146366"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Email"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="20dp"
+                                android:textSize="18sp"
+                                android:textColor="#146366"
+                                android:fontFamily="@font/amazon_bold"
+                                />
+                            <TextView
+                                android:id="@+id/tvEmail"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="User ID"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="20dp"
+                                android:textSize="16sp"
+                                android:textColor="#146366"
+                                />
+                        </LinearLayout>
+                        <view
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="#146366"/>
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/contectText"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    app:cardBackgroundColor="#1a776d"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginBottom="-15dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/white"
+                            android:text="Contect Information">
+
+                        </TextView>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="40dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/bitCoinCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="#81db7b"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_below="@id/btcText"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                       <View
+                           android:layout_width="match_parent"
+                           android:layout_height="30dp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="BTC Address"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="20dp"
+                                android:textSize="18sp"
+                                android:textColor="#146366"
+                                android:fontFamily="@font/amazon_bold"
+                                />
+                            <TextView
+                                android:id="@+id/tvBtcAddress"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="User ID"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="20dp"
+                                android:textSize="16sp"
+                                android:textColor="#146366"
+                                />
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btcText"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    app:cardBackgroundColor="#1a776d"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginBottom="-15dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/white"
+                            android:text="Bitcoin Information">
+
+                        </TextView>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>
