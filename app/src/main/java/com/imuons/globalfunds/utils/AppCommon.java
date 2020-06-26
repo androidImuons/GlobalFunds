@@ -138,6 +138,7 @@ public class AppCommon {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     dialogInterface.dismiss();
+                    mactivity.finish();
                 }
             });
             builder.show();
