@@ -1,0 +1,2 @@
+rootProject.name='GlobalFunds'
+include ':app'
