@@ -1,9 +1,9 @@
 package com.imuons.globalfunds.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.imuons.globalfunds.R;
 import com.imuons.globalfunds.utils.AppCommon;
@@ -33,7 +33,6 @@ public class SplashScreen extends AppCompatActivity {
                         startActivity(new Intent(SplashScreen.this, HomeActivity.class));
                     } else {
                         startActivity(new Intent(SplashScreen.this, LoginActivity.class));
-
                     }
                     finish();
 

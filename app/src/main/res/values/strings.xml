@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">GlobalFunds</string>
+    <string name="global_funds_group">Global Funds Group</string>
+    <string name="username">User Name</string>
+    <string name="pwd">Password</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="remeber_me">Remeber me</string>
+    <string name="dont_have_account">Dont\'t have an account ?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="now">Now</string>
+    <string name="title_activity_dashboard">Dashboard</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="temsAgree">I agree with <b>Tearms &amp; Conditions</b></string>
+    <string name="weHaveAcc">We have an account? Log In! Now</string>
 </resources>

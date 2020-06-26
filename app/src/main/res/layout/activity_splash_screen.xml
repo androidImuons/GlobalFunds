@@ -5,22 +5,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
     android:background="@drawable/bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".view.SplashScreen"
     >
 
     <ImageView
         android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/logo_300"
-        android:layout_height="300dp"
-        >
-    </ImageView>
+        ></ImageView>
+
     <TextView
         android:layout_width="wrap_content"
-        android:fontFamily="@font/amazon_bold"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="5dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="Global Funds \n Group"
+        android:textAllCaps="true"
+        android:textColor="@color/txt_color_green"
+        android:textSize="30dp"
+        >
 
     </TextView>
 </LinearLayout>

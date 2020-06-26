@@ -1,7 +1,11 @@
 package com.imuons.globalfunds.retrofit;
 
+import com.imuons.globalfunds.dataModel.CheckUser;
+import com.imuons.globalfunds.dataModel.ForgotPasswordResponse;
 import com.imuons.globalfunds.entity.LoginEntity;
 import com.imuons.globalfunds.responseModel.LoginResponse;
+
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -9,6 +13,15 @@ import retrofit2.http.POST;
 
 public interface AppService {
     @POST("login")
-    Call<LoginResponse> LoginApi(@Body LoginEntity loginEntity);
+    Call<LoginResponse> LoginApi(@Body LoginEntity loginEntity);//user_id,password,
+    @POST("checkuserexist")
+    Call<CheckUser>checkUser(@Body Map<String, Object>param);//user_id
+    @POST("reset-passwordlink")
+    Call<ForgotPasswordResponse> forgotParssword(@Body Map<String, Object> map);//user_id
+
+    @POST("register")
+    Call<RegisterResponse> RegisterApi(@Body RegisterEntity loginEntity);
+    @POST("get-profile-info")
+    Call<ProfileResponse> profileApi(@Body RegisterEntity loginEntity);
 
 }
