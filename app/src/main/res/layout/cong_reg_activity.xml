@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".view.RegistrationActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/logo_300" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/amazon_bold"
+                android:text="Global Funds Group"
+                android:textAllCaps="true"
+                android:textColor="#4f9f8d"
+                android:textSize="22sp"
+
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/button_gradient"
+                android:fontFamily="@font/amazon_bold"
+                android:onClick="createAccount"
+                android:text="Registration Successfully "
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/amazon_bold"
+                    android:gravity="center"
+                    android:text="Congrats!"
+                    android:textColor="#4f9f8d"
+                    android:textSize="18sp" />
+                    <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="You are now successfully registered\n with Global Funds Group. \n\n\n Below are Details"
+                    android:textColor="#4f9f8d"
+                    android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:padding="10dp"
+                        android:layout_marginBottom="@dimen/dp20"
+                        android:layout_marginTop="@dimen/dp20"
+                        android:background="@drawable/green_cong_bg">
+
+                        <TextView
+                            android:id="@+id/userId"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="UserId : 111111"
+                            android:textColor="@color/white"
+                            android:gravity="center_horizontal"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Password : ********"
+                            android:textColor="@color/white"
+                            android:gravity="center_horizontal"/>
+
+                    </LinearLayout>
+                    <Button
+                        android:id="@+id/loginBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/button_gradient"
+                        android:fontFamily="@font/amazon_bold"
+                        android:text="Login"
+
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

@@ -18,7 +18,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="40dp">
+                android:layout_marginTop="40dp"
+                android:paddingBottom="10dp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/basicCard"
@@ -28,7 +29,7 @@
                     android:layout_marginRight="30dp"
                     android:layout_marginLeft="30dp"
                     android:layout_below="@id/basicText"
-                    app:cardCornerRadius="5dp"
+                    app:cardCornerRadius="15dp"
                     app:cardElevation="10dp">
 
                     <LinearLayout
@@ -44,29 +45,29 @@
                             android:layout_height="35dp">
                             <TextView
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:text="User ID"
                                 android:layout_centerVertical="true"
                                 android:paddingLeft="20dp"
-                                android:textSize="18sp"
+                                android:textSize="14sp"
                                 android:textColor="#146366"
                                 android:fontFamily="@font/amazon_bold"
                                 />
                             <TextView
                                 android:id="@+id/tvUserId"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:text="User ID"
+                                android:text=""
                                 android:layout_centerVertical="true"
                                 android:paddingLeft="20dp"
-                                android:textSize="16sp"
+                                android:textSize="13sp"
                                 android:textColor="#146366"
                                 />
                         </LinearLayout>
 
-                        <view
+                        <View
                             android:layout_width="match_parent"
                             android:layout_height="0.5dp"
                             android:background="#146366"/>
@@ -75,28 +76,28 @@
                             android:layout_height="35dp">
                             <TextView
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:text="Full Name"
-                                android:layout_centerVertical="true"
+                                android:gravity="center_vertical"
                                 android:paddingLeft="20dp"
-                                android:textSize="18sp"
+                                android:textSize="14sp"
                                 android:textColor="#146366"
                                 android:fontFamily="@font/amazon_bold"
                                 />
                             <TextView
                                 android:id="@+id/tvFullName"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:text="User ID"
-                                android:layout_centerVertical="true"
+                                android:text=""
+                                android:gravity="center_vertical"
                                 android:paddingLeft="20dp"
-                                android:textSize="16sp"
+                                android:textSize="13sp"
                                 android:textColor="#146366"
                                 />
                         </LinearLayout>
-                        <view
+                        <View
                             android:layout_width="match_parent"
                             android:layout_height="0.5dp"
                             android:background="#146366"/>
@@ -105,28 +106,28 @@
                             android:layout_height="35dp">
                             <TextView
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:text="Sponsor Id"
-                                android:layout_centerVertical="true"
+                                android:gravity="center_vertical"
                                 android:paddingLeft="20dp"
-                                android:textSize="18sp"
+                                android:textSize="14sp"
                                 android:textColor="#146366"
                                 android:fontFamily="@font/amazon_bold"
                                 />
                             <TextView
                                 android:id="@+id/tvSponserId"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:text="User ID"
-                                android:layout_centerVertical="true"
+                                android:text=""
+                                android:gravity="center_vertical"
                                 android:paddingLeft="20dp"
-                                android:textSize="16sp"
+                                android:textSize="13sp"
                                 android:textColor="#146366"
                                 />
                         </LinearLayout>
-                        <view
+                        <View
                             android:layout_width="match_parent"
                             android:layout_height="0.5dp"
                             android:background="#146366"/>
@@ -135,12 +136,12 @@
                             android:layout_height="35dp">
                             <TextView
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:text="Sponsor Name"
-                                android:layout_centerVertical="true"
+                                android:gravity="center_vertical"
                                 android:paddingLeft="20dp"
-                                android:textSize="18sp"
+                                android:textSize="14sp"
                                 android:textColor="#146366"
                                 android:fontFamily="@font/amazon_bold"
                                 />
@@ -148,12 +149,12 @@
                             <TextView
                                 android:id="@+id/tvSponserName"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:text="User ID"
-                                android:layout_centerVertical="true"
+                                android:text=""
+                                android:gravity="center_vertical"
                                 android:paddingLeft="20dp"
-                                android:textSize="16sp"
+                                android:textSize="13sp"
                                 android:textColor="#146366"
                                 />
                         </LinearLayout>
@@ -190,7 +191,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="40dp">
+                android:layout_marginTop="40dp"
+                android:paddingBottom="10dp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/ContectCard"
@@ -200,8 +202,8 @@
                     android:layout_marginRight="30dp"
                     android:layout_marginLeft="30dp"
                     android:layout_below="@id/contectText"
-                    app:cardCornerRadius="5dp"
-                    app:cardElevation="10dp">
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -216,29 +218,29 @@
                             android:layout_height="35dp">
                             <TextView
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:text="Phone"
-                                android:layout_centerVertical="true"
+                                android:gravity="center_vertical"
                                 android:paddingLeft="20dp"
-                                android:textSize="18sp"
+                                android:textSize="14sp"
                                 android:textColor="#146366"
                                 android:fontFamily="@font/amazon_bold"
                                 />
                             <TextView
                                 android:id="@+id/tvPhone"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:text="User ID"
-                                android:layout_centerVertical="true"
+                                android:text=""
+                                android:gravity="center_vertical"
                                 android:paddingLeft="20dp"
-                                android:textSize="16sp"
+                                android:textSize="13sp"
                                 android:textColor="#146366"
                                 />
                         </LinearLayout>
 
-                        <view
+                        <View
                             android:layout_width="match_parent"
                             android:layout_height="0.5dp"
                             android:background="#146366"/>
@@ -247,31 +249,27 @@
                             android:layout_height="35dp">
                             <TextView
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:text="Email"
-                                android:layout_centerVertical="true"
+                                android:gravity="center_vertical"
                                 android:paddingLeft="20dp"
-                                android:textSize="18sp"
+                                android:textSize="14sp"
                                 android:textColor="#146366"
                                 android:fontFamily="@font/amazon_bold"
                                 />
                             <TextView
                                 android:id="@+id/tvEmail"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:text="User ID"
-                                android:layout_centerVertical="true"
+                                android:text=""
+                                android:gravity="center_vertical"
                                 android:paddingLeft="20dp"
-                                android:textSize="16sp"
+                                android:textSize="13sp"
                                 android:textColor="#146366"
                                 />
                         </LinearLayout>
-                        <view
-                            android:layout_width="match_parent"
-                            android:layout_height="0.5dp"
-                            android:background="#146366"/>
 
 
                     </LinearLayout>
@@ -306,7 +304,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="40dp">
+                android:layout_marginTop="40dp"
+                android:paddingBottom="10dp"
+                android:layout_marginBottom="@dimen/dp20">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/bitCoinCard"
@@ -316,7 +316,7 @@
                     android:layout_marginRight="30dp"
                     android:layout_marginLeft="30dp"
                     android:layout_below="@id/btcText"
-                    app:cardCornerRadius="5dp"
+                    app:cardCornerRadius="15dp"
                     app:cardElevation="10dp">
 
                     <LinearLayout
@@ -332,24 +332,24 @@
                             android:layout_height="35dp">
                             <TextView
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:text="BTC Address"
-                                android:layout_centerVertical="true"
+                                android:gravity="center_vertical"
                                 android:paddingLeft="20dp"
-                                android:textSize="18sp"
+                                android:textSize="14sp"
                                 android:textColor="#146366"
                                 android:fontFamily="@font/amazon_bold"
                                 />
                             <TextView
                                 android:id="@+id/tvBtcAddress"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:text="User ID"
-                                android:layout_centerVertical="true"
+                                android:text=""
+                                android:gravity="center_vertical"
                                 android:paddingLeft="20dp"
-                                android:textSize="16sp"
+                                android:textSize="13sp"
                                 android:textColor="#146366"
                                 />
                         </LinearLayout>

@@ -1,6 +1,7 @@
 package com.imuons.globalfunds.view;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -71,7 +72,7 @@ public class RegistrationActivity extends AppCompatActivity {
             et_confirmPassword.setError("Please enter confirm password");
         } else if (!cmf_password.matches(password)) {
             et_confirmPassword.setError("password not match");
-        } else if(!checkbox.isActivated()){
+        } else if(!checkbox.isChecked()){
             Toast.makeText(this, "Please click on check term & condition", Toast.LENGTH_SHORT).show();
         }else {
             if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
@@ -88,7 +89,8 @@ public class RegistrationActivity extends AppCompatActivity {
                         if (authResponse != null) {
                             Log.i("LoginResponse::", new Gson().toJson(authResponse));
                             if (authResponse.getCode() == 200) {
-                                AppCommon.getInstance(RegistrationActivity.this).showDialog(RegistrationActivity.this, "Hello " + name + "\nYour user UserId is: " + authResponse.getData().getUserid() + "\n and Password is: " + password + "\nPlease login with userId and password");
+                                startActivity(new Intent(RegistrationActivity.this , CongratulationPage.class).putExtra("userId" , authResponse.getData().getUserid()));
+                               // AppCommon.getInstance(RegistrationActivity.this).showDialog(RegistrationActivity.this, "Hello " + name + "\nYour user UserId is: " + authResponse.getData().getUserid() + "\n and Password is: " + password + "\nPlease login with userId and password");
                                 Toast.makeText(RegistrationActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(RegistrationActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
