@@ -1,7 +1,5 @@
 package com.imuons.globalfunds.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +8,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.gson.Gson;
 import com.imuons.globalfunds.R;
 import com.imuons.globalfunds.entity.RegisterEntity;
@@ -17,6 +17,7 @@ import com.imuons.globalfunds.responseModel.RegisterResponse;
 import com.imuons.globalfunds.retrofit.AppService;
 import com.imuons.globalfunds.retrofit.ServiceGenerator;
 import com.imuons.globalfunds.utils.AppCommon;
+import com.imuons.globalfunds.utils.ViewUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

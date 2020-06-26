@@ -118,6 +118,6 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.txt_sign_up)
     public void sign_up() {
-
+        startActivity(new Intent(getApplicationContext(), RegistrationActivity.class));
     }
 }

@@ -3,7 +3,10 @@ package com.imuons.globalfunds.retrofit;
 import com.imuons.globalfunds.dataModel.CheckUser;
 import com.imuons.globalfunds.dataModel.ForgotPasswordResponse;
 import com.imuons.globalfunds.entity.LoginEntity;
+import com.imuons.globalfunds.entity.RegisterEntity;
 import com.imuons.globalfunds.responseModel.LoginResponse;
+import com.imuons.globalfunds.responseModel.ProfileResponse;
+import com.imuons.globalfunds.responseModel.RegisterResponse;
 
 import java.util.Map;
 
