@@ -4,6 +4,7 @@ import com.imuons.globalfunds.dataModel.CheckUser;
 import com.imuons.globalfunds.dataModel.ForgotPasswordResponse;
 import com.imuons.globalfunds.entity.LoginEntity;
 import com.imuons.globalfunds.entity.RegisterEntity;
+import com.imuons.globalfunds.responseModel.DashBoardResponseModel;
 import com.imuons.globalfunds.responseModel.LoginResponse;
 import com.imuons.globalfunds.responseModel.ProfileResponse;
 import com.imuons.globalfunds.responseModel.RegisterResponse;
@@ -12,6 +13,7 @@ import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface AppService {
@@ -25,6 +27,8 @@ public interface AppService {
     @POST("register")
     Call<RegisterResponse> RegisterApi(@Body RegisterEntity loginEntity);
     @POST("get-profile-info")
-    Call<ProfileResponse> profileApi(@Body RegisterEntity loginEntity);
+    Call<ProfileResponse> profileApi();
+    @GET("get-user-dashboard")
+    Call<DashBoardResponseModel>GetDashBoard();
 
 }

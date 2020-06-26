@@ -1,17 +1,637 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".fragment.HomeFragment"
     >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-        />
+        >
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="0.25"
+                    android:buttonTint="@color/txt_color_green"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center_vertical"
+                    android:text="Referral Link"
+                    android:textColor="@color/txt_color_green"
+                    android:textSize="14dp"
+                    >
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/txt_link"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/bg_boarder_green_light_tra"
+                    android:buttonTint="@color/txt_color_green"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:paddingLeft="10dp"
+                    android:text="xcvv x"
+                    android:textColor="@color/txt_color_green"
+                    android:textSize="14dp"
+                    >
+
+                </TextView>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="0.25"
+                    android:background="@drawable/bg_boarder_white_light_tra"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center"
+                    android:text="Click"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    >
+
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/welcome"
+                >
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_boarder_white_light_tra"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="How To &amp; Where To ?"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                >
+
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:weightSum="1"
+                >
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/bg_green_round_10"
+                        android:backgroundTint="#5ccb6b"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        >
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/deposit"
+                            ></ImageView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.25"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="$ 1253"
+                            android:textColor="@color/white"
+                            android:textSize="18dp"
+                            >
+
+                        </TextView>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/bg_green_round_10"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:gravity="center"
+                        android:text="Total Deposit"
+                        android:textColor="@color/white"
+                        android:textSize="15dp"
+                        >
+
+                    </TextView>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/bg_green_round_10"
+                        android:backgroundTint="#5ccb6b"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        >
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/totalincome"
+                            ></ImageView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.25"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="$ 1253"
+                            android:textColor="@color/white"
+                            android:textSize="18dp"
+                            >
+
+                        </TextView>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/bg_green_round_10"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:gravity="center"
+                        android:text="Total Income"
+                        android:textColor="@color/white"
+                        android:textSize="15dp"
+                        >
+
+                    </TextView>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:visibility="gone"
+                android:weightSum="1"
+                >
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/bg_green_round_10"
+                        android:backgroundTint="#5ccb6b"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        >
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/totalwithdrawl"
+                            ></ImageView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.25"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="$ 1253"
+                            android:textColor="@color/white"
+                            android:textSize="18dp"
+                            >
+
+                        </TextView>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/bg_green_round_10"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:gravity="center"
+                        android:text="Total Withdrawal"
+                        android:textColor="@color/white"
+                        android:textSize="15dp"
+                        >
+
+                    </TextView>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/bg_green_round_10"
+                        android:backgroundTint="#5ccb6b"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        >
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/finalbalance"
+                            ></ImageView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.25"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="$ 1253"
+                            android:textColor="@color/white"
+                            android:textSize="18dp"
+                            >
+
+                        </TextView>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/bg_green_round_10"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:gravity="center"
+                        android:text="Final Balance"
+                        android:textColor="@color/white"
+                        android:textSize="15dp"
+                        >
+
+                    </TextView>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:weightSum="1"
+                >
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/dp20"
+                        android:background="@drawable/bg_green_round"
+                        android:backgroundTint="#166769"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:gravity="center"
+                            android:text="Team ROI Income"
+                            android:textColor="@color/white"
+                            android:textSize="14dp"
+                            ></TextView>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:gravity="center_vertical"
+                            >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:gravity="center"
+                                android:text="$ 1253"
+                                android:textColor="@color/white"
+                                android:textSize="16dp"
+                                ></TextView>
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerInParent="true"
+                                android:background="@drawable/teamroi"
+                                >
+
+
+                            </ImageView>
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="25dp"
+                        android:background="@drawable/bg_green_round__gradin10"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:gravity="center"
+                            android:text="ROI Income"
+                            android:textColor="@color/white"
+                            android:textSize="14dp"
+                            ></TextView>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:gravity="center"
+                                android:text="$ 1253"
+                                android:textColor="@color/white"
+                                android:textSize="16dp"
+                                ></TextView>
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerInParent="true"
+                                android:background="@drawable/roiincome"
+                                ></ImageView>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="25dp"
+                        android:background="@drawable/bg_green_round_30"
+                        android:backgroundTint="#1b7b6f"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
+                        android:weightSum="1"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:gravity="center"
+                            >
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:background="@drawable/directref"
+                                >
+
+                            </ImageView>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="7dp"
+                            android:background="@color/white"
+                            ></View>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.8"
+                            android:orientation="vertical"
+                            >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:gravity="center"
+                                android:text="Direct Referral Income"
+                                android:textColor="@color/white"
+                                android:textSize="12dp"
+                                ></TextView>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/white"
+                                ></View>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:gravity="center"
+                                android:text="$ 1253"
+                                android:textColor="@color/white"
+                                android:textSize="14dp"
+                                ></TextView>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/bg_green_round_30"
+                        android:backgroundTint="#1b7b6f"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
+                        android:weightSum="1"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:gravity="center"
+                            >
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:background="@drawable/levelref"
+                                >
+
+                            </ImageView>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="7dp"
+                            android:background="@color/white"
+                            ></View>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.8"
+                            android:orientation="vertical"
+                            >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:gravity="center"
+                                android:text="Level Referral Income"
+                                android:textColor="@color/white"
+                                android:textSize="12dp"
+                                ></TextView>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/white"
+                                ></View>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:gravity="center"
+                                android:text="$ 1253"
+                                android:textColor="@color/white"
+                                android:textSize="14dp"
+                                ></TextView>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
