@@ -157,6 +157,19 @@ public class DashBoardDataModel {
     @SerializedName("login_time")
     @Expose
     private String loginTime;
+
+  public double getTotal_business() {
+        return total_business;
+    }
+
+    void setTotal_business(double total_business) {
+        this.total_business = total_business;
+    }
+
+    @SerializedName("total_business")
+    @Expose
+    double total_business;
+
     private final static long serialVersionUID = -9043078288929960655L;
 
     public String getBtcAddress() {

@@ -16,4 +16,5 @@ public class MyPreference {
     public static final String LANG_ENGLISH = "en";
     public static final String LANG_HINDI = "hi";
     public static final String SELECTEDlANG="SELECTEDlANG";
+    public static String currency_symbol = "$";
 }

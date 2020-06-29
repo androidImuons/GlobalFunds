@@ -6,6 +6,7 @@ import com.imuons.globalfunds.entity.LoginEntity;
 import com.imuons.globalfunds.entity.RegisterEntity;
 import com.imuons.globalfunds.responseModel.DashBoardResponseModel;
 import com.imuons.globalfunds.responseModel.LoginResponse;
+import com.imuons.globalfunds.responseModel.PckageResponseModel;
 import com.imuons.globalfunds.responseModel.ProfileResponse;
 import com.imuons.globalfunds.responseModel.RegisterResponse;
 
@@ -30,5 +31,7 @@ public interface AppService {
     Call<ProfileResponse> profileApi();
     @GET("get-user-dashboard")
     Call<DashBoardResponseModel>GetDashBoard();
+    @GET("get-packages")
+    Call<PckageResponseModel> GetPackage();
 
 }
