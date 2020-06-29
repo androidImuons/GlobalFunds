@@ -19,6 +19,10 @@ public class EditProfileFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static EditProfileFragment newInstance() {
+        EditProfileFragment fragment = new EditProfileFragment();
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
