@@ -229,7 +229,7 @@ public class HomeActivity extends AppCompatActivity {
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
                                 break;
-                            case 3:
+                            case 2:
                                 is_home = false;
                                 fragmentManager.beginTransaction().replace(R.id.content_frame,
                                         LevelROIIncomeFragment.newInstance()).commit();
@@ -237,7 +237,7 @@ public class HomeActivity extends AppCompatActivity {
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
                                 break;
-                            case 4:
+                            case 3:
                                 is_home = false;
                                 fragmentManager.beginTransaction().replace(R.id.content_frame,
                                         AwardIncomeFragment.newInstance()).commit();
@@ -245,7 +245,6 @@ public class HomeActivity extends AppCompatActivity {
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
                                 break;
-
                         }
                         break;
                     case 5:
@@ -267,7 +266,7 @@ public class HomeActivity extends AppCompatActivity {
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
                                 break;
-                            case 3:
+                            case 2:
                                 is_home = false;
                                 fragmentManager.beginTransaction().replace(R.id.content_frame,
                                         OngoingWithdrawalFragment.newInstance()).commit();
