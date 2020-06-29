@@ -14,8 +14,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="40dp">
 
+
+            <ImageView
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/logo_300" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/amazon_bold"
+                android:text="Global Funds Group"
+                android:textAllCaps="true"
+                android:textColor="#4f9f8d"
+                android:textSize="22sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -164,7 +182,7 @@
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/ic_lock"
+                        android:src="@drawable/country"
                         android:tint="#4f9f8d" />
                 </RelativeLayout>
 
@@ -179,6 +197,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@android:color/transparent"
+                        android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:editable="false"
                         android:hint="Country"
                         android:inputType="text"
                         android:paddingLeft="10dp"
@@ -207,7 +228,7 @@
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/ic_lock"
+                        android:src="@drawable/bitcoin"
                         android:tint="#4f9f8d" />
                 </RelativeLayout>
 
@@ -234,6 +255,17 @@
 
             </LinearLayout>
 
+
+            <Button
+                android:id="@+id/btnUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="@dimen/dp20"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/button_gradient"
+                android:text="Update"
+                android:textColor="@color/white" />
 
         </LinearLayout>
     </ScrollView>
