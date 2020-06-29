@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/bg_green_round"
+        android:backgroundTint="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="5dp"
+        >
+
+        <TextView
+            android:id="@+id/txt_plan_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:inputType="textCapWords"
+            android:fontFamily="@font/montserrat_bold"
+            android:text=""
+            android:textColor="@color/txt_color_green"
+            android:textSize="18dp"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/txt_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/colorBlack"
+            android:textSize="16dp"
+            ></TextView>
+
+        <EditText
+            android:id="@+id/et_amount"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_boarder_black"
+            android:gravity="center"
+            android:textColor="@color/colorBlack"
+            android:layout_marginTop="10dp"
+            android:hint="Enter Amount(In USD)"
+            android:inputType="number"
+            android:lines="1"
+            android:padding="5dp"
+            >
+
+        </EditText>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_height="40dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="7dp"
+                android:gravity="center"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Payment Mode"
+                android:textColor="@color/colorBlack"
+                android:textSize="18dp"
+                ></TextView>
+            <RadioButton
+                android:id="@+id/rb_btn"
+                android:layout_width="100dp"
+                android:text="BTC"
+                android:layout_marginLeft="10dp"
+                android:checked="true"
+                android:buttonTint="@color/txt_color_green"
+                android:textColor="@color/colorBlack"
+                android:layout_height="match_parent">
+
+            </RadioButton>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/btn_make_payment"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:text="Make payment"
+            android:padding="10dp"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:background="@drawable/button_gradient"
+            android:layout_height="40dp">
+
+        </TextView>
+    </LinearLayout>
+
+</LinearLayout>

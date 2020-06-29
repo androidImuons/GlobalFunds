@@ -35,20 +35,23 @@ import java.util.HashMap;
 import butterknife.ButterKnife;
 
 public class HomeActivity extends AppCompatActivity {
+    ActionBarDrawerToggle mDrawerToggle;
+    boolean is_home = true;
     private ExpandableListAdapter mExpandableListAdapter;
     private ArrayList<ExpandableListModel> mExpandableListTitle;
     private HashMap<String, ArrayList<String>> mExpandableListData;
-    ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
     private ExpandableListView mExpandableListView;
     private FragmentManager fragmentManager;
     private Toolbar toolbar;
+    private MakeNewPaymentFragment makePayment;
+    private int child_itme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         // setSupportActionBar(toolbar);
         ButterKnife.bind(this);
         TextView user_id = toolbar.findViewById(R.id.tv_user);
@@ -57,7 +60,7 @@ public class HomeActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle(R.string.title_activity_dashboard);
         }
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
         mExpandableListView = findViewById(R.id.navList);
         mExpandableListView.setIndicatorBounds(mExpandableListView.getRight() + 120, mExpandableListView.getWidth());
         setupToolbar();
@@ -65,14 +68,18 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         prepareListData();
 
-        fragmentManager = getSupportFragmentManager();
-        mDrawerLayout.addDrawerListener(mDrawerToggle);
-        fragmentManager.beginTransaction().replace(R.id.content_frame, HomeFragment.newInstance(
-                "", "")).commit();
+       firstFragment();
         setupDrawerToggle();
 
         Listitemclick();
 
+    }
+
+    private void firstFragment() {
+        is_home=true;
+        fragmentManager = getSupportFragmentManager();
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
+        fragmentManager.beginTransaction().replace(R.id.content_frame, HomeFragment.newInstance("", "")).commit();
     }
 
     private void Listitemclick() {
@@ -87,19 +94,19 @@ public class HomeActivity extends AppCompatActivity {
         });
         mExpandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
-            public boolean onGroupClick(ExpandableListView parent, View v,
-                                        int groupPosition, long id) {
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
 
 
                 switch (groupPosition) {
                     case 0:
-                        fragmentManager.beginTransaction().replace(R.id.content_frame,
-                                HomeFragment.newInstance("", "")).commit();
+                        is_home = true;
+                        fragmentManager.beginTransaction().replace(R.id.content_frame, HomeFragment.newInstance("", "")).commit();
                         getSupportActionBar().setTitle("Dashboard");
                         mDrawerLayout.closeDrawers();
                         break;
 
                     case 6:
+                        is_home = true;
                         showAlertDialog();
                         break;
                 }
@@ -109,8 +116,7 @@ public class HomeActivity extends AppCompatActivity {
         mExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
             @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 // TODO Auto-generated method stub
                 switch (groupPosition) {
 
@@ -118,18 +124,24 @@ public class HomeActivity extends AppCompatActivity {
                         switch (childPosition) {
 
                             case 0:
+                                is_home = false;
+                                child_itme = childPosition;
                                 fragmentManager.beginTransaction().replace(R.id.content_frame, ProfileFragment.newInstance()).commit();
                                 getSupportActionBar().setTitle("Profile");
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
                                 break;
                             case 1:
+                                is_home = false;
+                                child_itme = childPosition;
                                 fragmentManager.beginTransaction().replace(R.id.content_frame, EditProfileFragment.newInstance()).commit();
                                 getSupportActionBar().setTitle("Edit Profile");
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
                                 break;
                             case 2:
+                                is_home = false;
+                                child_itme = childPosition;
                                 fragmentManager.beginTransaction().replace(R.id.content_frame, ChangePasswordFragment.newInstance()).commit();
                                 getSupportActionBar().setTitle("Change Password");
                                 mExpandableListView.setItemChecked(childPosition, true);
@@ -141,19 +153,26 @@ public class HomeActivity extends AppCompatActivity {
                     case 2:
                         switch (childPosition) {
                             case 0:
-                                fragmentManager.beginTransaction().replace(R.id.content_frame, MakeNewPaymentFragment.newInstance()).commit();
+                                is_home = false;
+                                child_itme = childPosition;
+                                makePayment = MakeNewPaymentFragment.newInstance();
+                                fragmentManager.beginTransaction().replace(R.id.content_frame, makePayment).commit();
                                 getSupportActionBar().setTitle("Make New Payment");
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
                                 break;
 
                             case 1:
+                                is_home = false;
+                                child_itme = childPosition;
                                 fragmentManager.beginTransaction().replace(R.id.content_frame, OnGoingPayments.newInstance()).commit();
                                 getSupportActionBar().setTitle("On Going Payment");
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
                                 break;
                             case 2:
+                                is_home = false;
+                                child_itme = childPosition;
                                 fragmentManager.beginTransaction().replace(R.id.content_frame, ConfirmedPaymentsFragment.newInstance()).commit();
                                 getSupportActionBar().setTitle("Confirm Payment");
                                 mExpandableListView.setItemChecked(childPosition, true);
@@ -183,7 +202,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void setupToolbar() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
@@ -249,8 +268,7 @@ public class HomeActivity extends AppCompatActivity {
         mExpandableListData.put(mExpandableListTitle.get(6).title, allTransactions);
 
 
-        mExpandableListAdapter = new CustomExpandableListAdapter(HomeActivity.this, mExpandableListTitle,
-                mExpandableListData);
+        mExpandableListAdapter = new CustomExpandableListAdapter(HomeActivity.this, mExpandableListTitle, mExpandableListData);
         mExpandableListView.setAdapter(mExpandableListAdapter);
 
     }
@@ -264,32 +282,45 @@ public class HomeActivity extends AppCompatActivity {
         builder1.setMessage("Are you sure you want to Logout ?");
         builder1.setCancelable(true);
 
-        builder1.setPositiveButton(
-                "Yes",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                        HomeActivity.this.finish();
-                        SharedPreferenceUtils.clearPreferences(HomeActivity.this);
-                        SharedPreferenceUtils.clearID(HomeActivity.this);
-                        SharedPreferenceUtils.clearAccess_Token(HomeActivity.this);
-                        SharedPreferenceUtils.storeSplash(HomeActivity.this, "stop");
-                        AppCommon.getInstance(HomeActivity.this).clearPreference();
-                        startActivity(new Intent(HomeActivity.this, LoginActivity.class));
-                        finishAffinity();
-                        Toast.makeText(HomeActivity.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        builder1.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+                HomeActivity.this.finish();
+                SharedPreferenceUtils.clearPreferences(HomeActivity.this);
+                SharedPreferenceUtils.clearID(HomeActivity.this);
+                SharedPreferenceUtils.clearAccess_Token(HomeActivity.this);
+                SharedPreferenceUtils.storeSplash(HomeActivity.this, "stop");
+                AppCommon.getInstance(HomeActivity.this).clearPreference();
+                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                finishAffinity();
+                Toast.makeText(HomeActivity.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        builder1.setNegativeButton(
-                "No",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
+        builder1.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
 
         AlertDialog alert11 = builder1.create();
         alert11.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(is_home){
+            finish();
+        }else{
+           firstFragment();
+        }
+        if (makePayment != null) {
+            if (makePayment.is_payment_dialog_open) {
+                makePayment.dialogBox.setVisibility(View.GONE);
+            } else {
+
+            }
+        }
+
     }
 }
