@@ -67,5 +67,4 @@ public interface AppService {
     Call<CommonResponse>updateProfile(
             @Body UpdateProfileEnitity upadteProfile
     );
-
 }
