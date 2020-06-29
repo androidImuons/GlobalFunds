@@ -19,7 +19,13 @@ import androidx.fragment.app.FragmentManager;
 import com.imuons.globalfunds.R;
 import com.imuons.globalfunds.adapter.CustomExpandableListAdapter;
 import com.imuons.globalfunds.dataModel.ExpandableListModel;
+import com.imuons.globalfunds.fragment.ChangePasswordFragment;
+import com.imuons.globalfunds.fragment.ConfirmedPaymentsFragment;
+import com.imuons.globalfunds.fragment.EditProfileFragment;
 import com.imuons.globalfunds.fragment.HomeFragment;
+import com.imuons.globalfunds.fragment.MakeNewPaymentFragment;
+import com.imuons.globalfunds.fragment.OnGoingPayments;
+import com.imuons.globalfunds.fragment.ProfileFragment;
 import com.imuons.globalfunds.utils.AppCommon;
 import com.imuons.globalfunds.utils.SharedPreferenceUtils;
 
@@ -43,9 +49,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-       // setSupportActionBar(toolbar);
+        // setSupportActionBar(toolbar);
         ButterKnife.bind(this);
-        TextView user_id =toolbar.findViewById(R.id.tv_user);
+        TextView user_id = toolbar.findViewById(R.id.tv_user);
         user_id.setText(AppCommon.getInstance(this).getUserId());
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -62,7 +68,7 @@ public class HomeActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
         mDrawerLayout.addDrawerListener(mDrawerToggle);
         fragmentManager.beginTransaction().replace(R.id.content_frame, HomeFragment.newInstance(
-                "","")).commit();
+                "", "")).commit();
         setupDrawerToggle();
 
         Listitemclick();
@@ -88,10 +94,9 @@ public class HomeActivity extends AppCompatActivity {
                 switch (groupPosition) {
                     case 0:
                         fragmentManager.beginTransaction().replace(R.id.content_frame,
-                                HomeFragment.newInstance("","")).commit();
+                                HomeFragment.newInstance("", "")).commit();
                         getSupportActionBar().setTitle("Dashboard");
                         mDrawerLayout.closeDrawers();
-
                         break;
 
                     case 6:
@@ -109,6 +114,54 @@ public class HomeActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 switch (groupPosition) {
 
+                    case 1:
+                        switch (childPosition) {
+
+                            case 0:
+                                fragmentManager.beginTransaction().replace(R.id.content_frame, ProfileFragment.newInstance()).commit();
+                                getSupportActionBar().setTitle("Profile");
+                                mExpandableListView.setItemChecked(childPosition, true);
+                                mExpandableListView.setSelection(childPosition);
+                                break;
+                            case 1:
+                                fragmentManager.beginTransaction().replace(R.id.content_frame, EditProfileFragment.newInstance()).commit();
+                                getSupportActionBar().setTitle("Edit Profile");
+                                mExpandableListView.setItemChecked(childPosition, true);
+                                mExpandableListView.setSelection(childPosition);
+                                break;
+                            case 2:
+                                fragmentManager.beginTransaction().replace(R.id.content_frame, ChangePasswordFragment.newInstance()).commit();
+                                getSupportActionBar().setTitle("Change Password");
+                                mExpandableListView.setItemChecked(childPosition, true);
+                                mExpandableListView.setSelection(childPosition);
+                                break;
+                        }
+                        break;
+
+                    case 2:
+                        switch (childPosition) {
+                            case 0:
+                                fragmentManager.beginTransaction().replace(R.id.content_frame, MakeNewPaymentFragment.newInstance()).commit();
+                                getSupportActionBar().setTitle("Make New Payment");
+                                mExpandableListView.setItemChecked(childPosition, true);
+                                mExpandableListView.setSelection(childPosition);
+                                break;
+
+                            case 1:
+                                fragmentManager.beginTransaction().replace(R.id.content_frame, OnGoingPayments.newInstance()).commit();
+                                getSupportActionBar().setTitle("On Going Payment");
+                                mExpandableListView.setItemChecked(childPosition, true);
+                                mExpandableListView.setSelection(childPosition);
+                                break;
+                            case 2:
+                                fragmentManager.beginTransaction().replace(R.id.content_frame, ConfirmedPaymentsFragment.newInstance()).commit();
+                                getSupportActionBar().setTitle("Confirm Payment");
+                                mExpandableListView.setItemChecked(childPosition, true);
+                                mExpandableListView.setSelection(childPosition);
+                                break;
+
+                        }
+                        break;
 
                 }
                 mDrawerLayout.closeDrawers();
@@ -134,6 +187,7 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
+
     void setupDrawerToggle() {
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name, R.string.app_name);
         //This is necessary to change the icon of the Drawer Toggle upon state change.

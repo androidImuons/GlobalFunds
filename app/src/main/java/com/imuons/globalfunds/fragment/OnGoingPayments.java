@@ -19,7 +19,10 @@ public class OnGoingPayments extends Fragment {
         // Required empty public constructor
     }
 
-
+    public static OnGoingPayments newInstance() {
+        OnGoingPayments fragment = new OnGoingPayments();
+        return fragment;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

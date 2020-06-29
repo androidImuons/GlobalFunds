@@ -19,7 +19,10 @@ public class MakeNewPaymentFragment extends Fragment {
         // Required empty public constructor
     }
 
-
+    public static MakeNewPaymentFragment newInstance() {
+        MakeNewPaymentFragment fragment = new MakeNewPaymentFragment();
+        return fragment;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

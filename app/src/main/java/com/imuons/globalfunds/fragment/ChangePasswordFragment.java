@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.imuons.globalfunds.R;
@@ -27,13 +28,16 @@ public class ChangePasswordFragment extends Fragment {
     @BindView(R.id.et_reTypePassword)
     EditText et_reTypePassword;
     @BindView(R.id.btnUpdate)
-    EditText btnUpdate;
+    Button btnUpdate;
 
     public ChangePasswordFragment() {
         // Required empty public constructor
     }
 
-
+    public static ChangePasswordFragment newInstance() {
+        ChangePasswordFragment fragment = new ChangePasswordFragment();
+        return fragment;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
