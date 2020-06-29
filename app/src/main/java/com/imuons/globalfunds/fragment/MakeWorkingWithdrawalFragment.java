@@ -17,8 +17,8 @@ public class MakeWorkingWithdrawalFragment extends Fragment {
     public MakeWorkingWithdrawalFragment() {
         // Required empty public constructor
     }
-    public static LevelViewFragment newInstance() {
-        LevelViewFragment fragment = new LevelViewFragment();
+    public static MakeWorkingWithdrawalFragment newInstance() {
+        MakeWorkingWithdrawalFragment fragment = new MakeWorkingWithdrawalFragment();
         return fragment;
     }
 

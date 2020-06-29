@@ -12,20 +12,20 @@ import com.imuons.globalfunds.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OngoingWithdrawalFragment extends Fragment {
+public class DirectIncomeReport extends Fragment {
 
-    public OngoingWithdrawalFragment() {
+    public DirectIncomeReport() {
         // Required empty public constructor
     }
-
-    public static OngoingWithdrawalFragment newInstance() {
-        OngoingWithdrawalFragment fragment = new OngoingWithdrawalFragment();
+    public static DirectIncomeReport newInstance() {
+        DirectIncomeReport fragment = new DirectIncomeReport();
         return fragment;
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ongoing_withdrawal, container, false);
+        return inflater.inflate(R.layout.fragment_direct_income_report, container, false);
     }
 }
