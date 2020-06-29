@@ -18,7 +18,10 @@ public class LevelViewFragment extends Fragment {
     public LevelViewFragment() {
         // Required empty public constructor
     }
-
+    public static LevelViewFragment newInstance() {
+        LevelViewFragment fragment = new LevelViewFragment();
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
