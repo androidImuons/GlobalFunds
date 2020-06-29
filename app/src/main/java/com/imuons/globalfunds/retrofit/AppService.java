@@ -50,6 +50,17 @@ public interface AppService {
     @POST("topup-report")
     Call<ConfirmPaymentReportResponse> GetTopUPReport(@Body Map<String, Object> map);
 
+    @POST("change-password")
+    Call<CommonResponse>changePassword(
+            @Body ChangePasswordEnity changeEntiy
+    );
 
+    @POST("sendOtp-update-user-profile")
+    Call<CommonResponse>updateOtp(
+    );
+    @POST("checkotp1")
+    Call<CommonResponse>updateProfile(
+            @Body UpdateProfileEnitity upadteProfile
+    );
 
 }
