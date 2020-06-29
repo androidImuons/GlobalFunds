@@ -19,15 +19,22 @@ import androidx.fragment.app.FragmentManager;
 import com.imuons.globalfunds.R;
 import com.imuons.globalfunds.adapter.CustomExpandableListAdapter;
 import com.imuons.globalfunds.dataModel.ExpandableListModel;
+import com.imuons.globalfunds.fragment.AwardIncomeFragment;
 import com.imuons.globalfunds.fragment.ChangePasswordFragment;
 import com.imuons.globalfunds.fragment.ConfirmedPaymentsFragment;
+import com.imuons.globalfunds.fragment.ConfirmedWithdrawalFragment;
 import com.imuons.globalfunds.fragment.DirectUserListFragment;
 import com.imuons.globalfunds.fragment.EditProfileFragment;
 import com.imuons.globalfunds.fragment.HomeFragment;
+import com.imuons.globalfunds.fragment.LevelIncomeReportFragment;
+import com.imuons.globalfunds.fragment.LevelROIIncomeFragment;
 import com.imuons.globalfunds.fragment.LevelViewFragment;
 import com.imuons.globalfunds.fragment.MakeNewPaymentFragment;
+import com.imuons.globalfunds.fragment.MakeWorkingWithdrawalFragment;
 import com.imuons.globalfunds.fragment.OnGoingPayments;
+import com.imuons.globalfunds.fragment.OngoingWithdrawalFragment;
 import com.imuons.globalfunds.fragment.ProfileFragment;
+import com.imuons.globalfunds.fragment.ROIIncomeReportFragment;
 import com.imuons.globalfunds.utils.AppCommon;
 import com.imuons.globalfunds.utils.SharedPreferenceUtils;
 
@@ -186,6 +193,7 @@ public class HomeActivity extends AppCompatActivity {
                     case 3:
                         switch (childPosition) {
                             case 0:
+                                is_home = false;
                                 fragmentManager.beginTransaction().replace(R.id.content_frame, DirectUserListFragment.newInstance()).commit();
                                 getSupportActionBar().setTitle("Direct User List");
                                 mExpandableListView.setItemChecked(childPosition, true);
@@ -193,8 +201,77 @@ public class HomeActivity extends AppCompatActivity {
                                 break;
 
                             case 1:
+                                is_home = false;
                                 fragmentManager.beginTransaction().replace(R.id.content_frame, LevelViewFragment.newInstance()).commit();
                                 getSupportActionBar().setTitle("Level View");
+                                mExpandableListView.setItemChecked(childPosition, true);
+                                mExpandableListView.setSelection(childPosition);
+                                break;
+
+                        }
+                        break;
+                    case 4:
+                        switch (childPosition) {
+                            case 0:
+                                is_home = false;
+                                fragmentManager.beginTransaction().replace(R.id.content_frame,
+                                        ROIIncomeReportFragment.newInstance()).commit();
+                                getSupportActionBar().setTitle("ROI Income Report");
+                                mExpandableListView.setItemChecked(childPosition, true);
+                                mExpandableListView.setSelection(childPosition);
+                                break;
+
+                            case 1:
+                                is_home = false;
+                                fragmentManager.beginTransaction().replace(R.id.content_frame,
+                                        LevelIncomeReportFragment.newInstance()).commit();
+                                getSupportActionBar().setTitle("Level Income Report");
+                                mExpandableListView.setItemChecked(childPosition, true);
+                                mExpandableListView.setSelection(childPosition);
+                                break;
+                            case 3:
+                                is_home = false;
+                                fragmentManager.beginTransaction().replace(R.id.content_frame,
+                                        LevelROIIncomeFragment.newInstance()).commit();
+                                getSupportActionBar().setTitle("Level ROI Income Report");
+                                mExpandableListView.setItemChecked(childPosition, true);
+                                mExpandableListView.setSelection(childPosition);
+                                break;
+                            case 4:
+                                is_home = false;
+                                fragmentManager.beginTransaction().replace(R.id.content_frame,
+                                        AwardIncomeFragment.newInstance()).commit();
+                                getSupportActionBar().setTitle("Award Income Report");
+                                mExpandableListView.setItemChecked(childPosition, true);
+                                mExpandableListView.setSelection(childPosition);
+                                break;
+
+                        }
+                        break;
+                    case 5:
+                        switch (childPosition) {
+                            case 0:
+                                is_home = false;
+                                fragmentManager.beginTransaction().replace(R.id.content_frame,
+                                        MakeWorkingWithdrawalFragment.newInstance()).commit();
+                                getSupportActionBar().setTitle("Make Working Withdrawal");
+                                mExpandableListView.setItemChecked(childPosition, true);
+                                mExpandableListView.setSelection(childPosition);
+                                break;
+
+                            case 1:
+                                is_home = false;
+                                fragmentManager.beginTransaction().replace(R.id.content_frame,
+                                        ConfirmedWithdrawalFragment.newInstance()).commit();
+                                getSupportActionBar().setTitle("Confirm Withdrawal");
+                                mExpandableListView.setItemChecked(childPosition, true);
+                                mExpandableListView.setSelection(childPosition);
+                                break;
+                            case 3:
+                                is_home = false;
+                                fragmentManager.beginTransaction().replace(R.id.content_frame,
+                                        OngoingWithdrawalFragment.newInstance()).commit();
+                                getSupportActionBar().setTitle("Ongoing Withdrawal");
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
                                 break;
