@@ -19,7 +19,10 @@ public class DirectUserListFragment extends Fragment {
         // Required empty public constructor
     }
 
-
+    public static DirectUserListFragment newInstance() {
+        DirectUserListFragment fragment = new DirectUserListFragment();
+        return fragment;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

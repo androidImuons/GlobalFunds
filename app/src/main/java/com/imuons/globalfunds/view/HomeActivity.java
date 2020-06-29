@@ -21,8 +21,10 @@ import com.imuons.globalfunds.adapter.CustomExpandableListAdapter;
 import com.imuons.globalfunds.dataModel.ExpandableListModel;
 import com.imuons.globalfunds.fragment.ChangePasswordFragment;
 import com.imuons.globalfunds.fragment.ConfirmedPaymentsFragment;
+import com.imuons.globalfunds.fragment.DirectUserListFragment;
 import com.imuons.globalfunds.fragment.EditProfileFragment;
 import com.imuons.globalfunds.fragment.HomeFragment;
+import com.imuons.globalfunds.fragment.LevelViewFragment;
 import com.imuons.globalfunds.fragment.MakeNewPaymentFragment;
 import com.imuons.globalfunds.fragment.OnGoingPayments;
 import com.imuons.globalfunds.fragment.ProfileFragment;
@@ -156,6 +158,24 @@ public class HomeActivity extends AppCompatActivity {
                             case 2:
                                 fragmentManager.beginTransaction().replace(R.id.content_frame, ConfirmedPaymentsFragment.newInstance()).commit();
                                 getSupportActionBar().setTitle("Confirm Payment");
+                                mExpandableListView.setItemChecked(childPosition, true);
+                                mExpandableListView.setSelection(childPosition);
+                                break;
+
+                        }
+                        break;
+                    case 3:
+                        switch (childPosition) {
+                            case 0:
+                                fragmentManager.beginTransaction().replace(R.id.content_frame, DirectUserListFragment.newInstance()).commit();
+                                getSupportActionBar().setTitle("Direct User List");
+                                mExpandableListView.setItemChecked(childPosition, true);
+                                mExpandableListView.setSelection(childPosition);
+                                break;
+
+                            case 1:
+                                fragmentManager.beginTransaction().replace(R.id.content_frame, LevelViewFragment.newInstance()).commit();
+                                getSupportActionBar().setTitle("Level View");
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
                                 break;
