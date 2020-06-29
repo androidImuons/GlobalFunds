@@ -4,6 +4,7 @@ import com.imuons.globalfunds.dataModel.CheckUser;
 import com.imuons.globalfunds.dataModel.ForgotPasswordResponse;
 import com.imuons.globalfunds.entity.LoginEntity;
 import com.imuons.globalfunds.entity.RegisterEntity;
+import com.imuons.globalfunds.responseModel.ConfirmPaymentReportResponse;
 import com.imuons.globalfunds.responseModel.DashBoardResponseModel;
 import com.imuons.globalfunds.responseModel.GetAddressResponse;
 import com.imuons.globalfunds.responseModel.LoginResponse;
@@ -46,5 +47,9 @@ public interface AppService {
 
     @POST("pending-deposit")
     Call<OngoingPaymentResponseModel> GetPendingDeposit(@Body Map<String, Object> map);
+    @POST("topup-report")
+    Call<ConfirmPaymentReportResponse> GetTopUPReport(@Body Map<String, Object> map);
+
+
 
 }
