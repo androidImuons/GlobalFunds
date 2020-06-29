@@ -2,8 +2,11 @@ package com.imuons.globalfunds.retrofit;
 
 import com.imuons.globalfunds.dataModel.CheckUser;
 import com.imuons.globalfunds.dataModel.ForgotPasswordResponse;
+import com.imuons.globalfunds.entity.ChangePasswordEnity;
 import com.imuons.globalfunds.entity.LoginEntity;
 import com.imuons.globalfunds.entity.RegisterEntity;
+import com.imuons.globalfunds.entity.UpdateProfileEnitity;
+import com.imuons.globalfunds.responseModel.CommonResponse;
 import com.imuons.globalfunds.responseModel.ConfirmPaymentReportResponse;
 import com.imuons.globalfunds.responseModel.DashBoardResponseModel;
 import com.imuons.globalfunds.responseModel.GetAddressResponse;
@@ -51,6 +54,8 @@ public interface AppService {
     Call<ConfirmPaymentReportResponse> GetTopUPReport(@Body Map<String, Object> map);
 
     @POST("change-password")
+
+
     Call<CommonResponse>changePassword(
             @Body ChangePasswordEnity changeEntiy
     );
