@@ -14,7 +14,11 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.imuons.globalfunds.R;
+import com.imuons.globalfunds.dataModel.PenddingWorkingRecord;
 import com.imuons.globalfunds.fragment.OngoingWithdrawalFragment;
+import com.imuons.globalfunds.utils.MyPreference;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,14 +26,15 @@ import butterknife.ButterKnife;
 public class OnGoingWithdrawReportAdapter extends RecyclerView.Adapter<OnGoingWithdrawReportAdapter.ViewHoleder> {
 
 
-
     FragmentActivity activity;
+    List<PenddingWorkingRecord> records;
     private int selected_postion;
 
-    public OnGoingWithdrawReportAdapter(FragmentActivity activity, OngoingWithdrawalFragment ongoingWithdrawalFragment) {
-        this.activity=activity;
-    }
 
+    public OnGoingWithdrawReportAdapter(FragmentActivity activity, OngoingWithdrawalFragment ongoingWithdrawalFragment, List<PenddingWorkingRecord> records) {
+        this.activity = activity;
+        this.records = records;
+    }
 
     @NonNull
     @Override
@@ -57,7 +62,7 @@ public class OnGoingWithdrawReportAdapter extends RecyclerView.Adapter<OnGoingWi
             holder.expand_icon.setActivated(false);
             holder.llmain.setActivated(false);
         }
-
+        setData(holder, records.get(position), position);
         holder.llmain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,13 +73,30 @@ public class OnGoingWithdrawReportAdapter extends RecyclerView.Adapter<OnGoingWi
         });
     }
 
+    private void setData(ViewHoleder holder, PenddingWorkingRecord penddingWorkingRecord, int position) {
+        holder.srno.setText(String.valueOf(position + 1));
+        holder.n_w_type.setText(penddingWorkingRecord.getNetworkType());
+        holder.amount.setText(MyPreference.currency_symbol + penddingWorkingRecord.getAmount());
+        holder.txt_date.setText(penddingWorkingRecord.getEntryTime());
+        if (penddingWorkingRecord.getWithdrawType() == 2) {
+            holder.txt_withdrwa_type.setText("Working");
+        } else if(penddingWorkingRecord.getWithdrawType() == 6){
+            holder.txt_withdrwa_type.setText("Principal");
 
+        }else{
+            holder.txt_withdrwa_type.setText(String.valueOf(penddingWorkingRecord.getWithdrawType()));
+        }
+    }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return records.size();
     }
 
+    public void update(List<PenddingWorkingRecord> records) {
+        this.records = records;
+        notifyDataSetChanged();
+    }
 
 
     public class ViewHoleder extends RecyclerView.ViewHolder {

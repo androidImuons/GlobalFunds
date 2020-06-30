@@ -123,5 +123,10 @@ public interface AppService {
             @Body Map<String, Object> map
     );
 
+    @POST("all-withdraw-confirm-reports")
+    Call<ConfirmWithdralReportResponse>cofirmWithdralApi(
+            @Body Map<String, Object> map
+    );
+
 
 }

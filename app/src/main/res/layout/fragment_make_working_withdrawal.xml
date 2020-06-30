@@ -42,10 +42,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/dp10"
-                android:fontFamily="@font/montserrat_bold"
+                android:fontFamily="@font/montserrat_regular"
                 android:text="00.00"
+                android:textStyle="bold"
                 android:textColor="@color/colorBlack"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 />
 
         </LinearLayout>
@@ -73,10 +74,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/dp10"
-                android:fontFamily="@font/montserrat_bold"
+
+                android:fontFamily="@font/montserrat_regular"
                 android:text="00.00"
+                android:textStyle="bold"
                 android:textColor="@color/colorBlack"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 />
 
         </LinearLayout>
@@ -115,10 +118,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/dp10"
-                android:fontFamily="@font/montserrat_bold"
+                android:fontFamily="@font/montserrat_regular"
                 android:text="00.00"
+                android:textStyle="bold"
                 android:textColor="@color/colorBlack"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 />
 
         </LinearLayout>
@@ -146,10 +150,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/dp10"
-                android:fontFamily="@font/montserrat_bold"
+                android:fontFamily="@font/montserrat_regular"
                 android:text="00.00"
+                android:textStyle="bold"
                 android:textColor="@color/colorBlack"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 />
 
         </LinearLayout>
@@ -188,10 +193,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/dp10"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="address"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="00.00"
+                android:textStyle="bold"
                 android:textColor="@color/colorBlack"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 />
 
         </LinearLayout>
