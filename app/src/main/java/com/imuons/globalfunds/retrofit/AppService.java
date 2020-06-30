@@ -62,73 +62,64 @@ public interface AppService {
 
     @POST("pending-deposit")
     Call<OngoingPaymentResponseModel> GetPendingDeposit(@Body Map<String, Object> map);
+
     @POST("topup-report")
     Call<ConfirmPaymentReportResponse> GetTopUPReport(@Body Map<String, Object> map);
 
     @POST("change-password")
-
-
-    Call<CommonResponse>changePassword(
-            @Body ChangePasswordEnity changeEntiy
-    );
+    Call<CommonResponse> changePassword(@Body ChangePasswordEnity changeEntiy);
 
     @POST("sendOtp-update-user-profile")
-    Call<CommonResponse>updateOtp(
-    );
+    Call<CommonResponse> updateOtp();
+
     @POST("checkotp1")
-    Call<CommonResponse>updateProfile(
-            @Body UpdateProfileEnitity upadteProfile
-    );
+    Call<CommonResponse> updateProfile(@Body UpdateProfileEnitity upadteProfile);
+
     @GET("get-reference-id")
-    Call<ReferalLinkResponseModel>GetReferal();
+    Call<ReferalLinkResponseModel> GetReferal();
 
     //Income Report:- ROI Income Report
     @POST("roi-income")
-    Call<RoiIncomeReportResponse> roiIncome(
-            @Body Map<String, Object> map
-    );
+    Call<RoiIncomeReportResponse> roiIncome(@Body Map<String, Object> map);
+
     @POST("level-income")
-    Call<LevelIncomeReportResponse> level_income(
-            @Body Map<String, Object> map
-    );
+    Call<LevelIncomeReportResponse> level_income(@Body Map<String, Object> map);
+
     @POST("level-income-roi")
-    Call<LevelROIIncomeReportResponse> level_income_roi(
-            @Body Map<String, Object> map
-    );
+    Call<LevelROIIncomeReportResponse> level_income_roi(@Body Map<String, Object> map);
 
     //Income Report:- AwardIncome
     @POST("userWinnerList")
-    Call<AwardIncomeReportResponse> awardIncome(
-            @Body Map<String, Object> map
-    );
+    Call<AwardIncomeReportResponse> awardIncome(@Body Map<String, Object> map);
 
     //Income Report:- Direct Business report
     @POST("direct-business")
-    Call<DirectBusinessReportResponse> directBusinessReport(
-            @Body Map<String, Object> map
-    );
+    Call<DirectBusinessReportResponse> directBusinessReport(@Body Map<String, Object> map);
 
     @POST("direct_list")
     Call<DirectUserResponseModel> DirectUserApit(@Body Map<String, Object> map);
+
     @POST("level-view")
     Call<LevelViewResponseModel> levelViewApi(@Body Map<String, Object> map);
+
     @POST("get-level")
     Call<GetLevelResponse> GetlevelViewApi();
 
     @POST("withdraw-income")
-    Call<CommonResponse>withDrawWorkingApi(
-            @Body WithDrawalEntity withDrawalEntity
-    );
+    Call<CommonResponse> withDrawWorkingApi(@Body WithDrawalEntity withDrawalEntity);
+
     @POST("all-withdraw-pending-reports")
-    Call<PenddingWithdrwalResponse>withDrawPendingApi(
-            @Body Map<String, Object> map
-    );
+    Call<PenddingWithdrwalResponse> withDrawPendingApi(@Body Map<String, Object> map);
 
     @POST("all-withdraw-confirm-reports")
+    Call<ConfirmWithdralReportResponse> cofirmWithdralApi(@Body Map<String, Object> map);
 
-    Call<ConfirmWithdralReportResponse>cofirmWithdralApi(
-            @Body Map<String, Object> map
+    @POST("withdraw-principal")
+    Call<CommonResponse> withdraw_principal(@Body Map<String, Object> map);
+
+    @POST("check_address")
+    Call<CommonResponse> checkAddress(
+            @Body CheckUserEntity checkUserEnity
     );
-
 
 }

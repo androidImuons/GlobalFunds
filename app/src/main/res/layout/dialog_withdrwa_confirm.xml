@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/dp10"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/dp20"
+    android:background="@drawable/bg_boarder_black"
+    android:gravity="center_horizontal"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@drawable/ic_alert"
+        android:layout_height="50dp">
+    </ImageView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/dp10"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="@dimen/dp20"
+        android:text="Are you sure?"
+        android:layout_height="wrap_content">
+
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/dp5"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="@dimen/dp20"
+        android:text="You want to update this user"
+        android:layout_height="wrap_content">
+
+    </TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp20"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/dp10"
+        android:layout_height="40dp">
+        <TextView
+            android:id="@+id/txt_yes"
+            android:layout_width="100dp"
+            android:text="YES"
+            android:textSize="@dimen/dp20"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:background="@drawable/button_gradient"
+            android:layout_height="match_parent">
+
+        </TextView>
+        <TextView
+            android:id="@+id/txt_cancel"
+            android:layout_width="100dp"
+            android:text="@string/Cancel"
+            android:textSize="@dimen/dp20"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/dp20"
+            android:background="@drawable/button_gradient"
+            android:layout_height="match_parent">
+
+        </TextView>
+    </LinearLayout>
+</LinearLayout>
+</LinearLayout>
