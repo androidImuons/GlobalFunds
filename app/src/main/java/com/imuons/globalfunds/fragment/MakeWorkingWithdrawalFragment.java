@@ -34,7 +34,10 @@ public class MakeWorkingWithdrawalFragment extends Fragment {
     public MakeWorkingWithdrawalFragment() {
         // Required empty public constructor
     }
-
+    public static MakeWorkingWithdrawalFragment newInstance() {
+        MakeWorkingWithdrawalFragment fragment = new MakeWorkingWithdrawalFragment();
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

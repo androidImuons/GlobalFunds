@@ -1,12 +1,11 @@
 package com.imuons.globalfunds.fragment;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 import com.imuons.globalfunds.R;
 
@@ -15,6 +14,10 @@ public class ROIIncomeReportFragment extends Fragment {
 
     public ROIIncomeReportFragment() {
         // Required empty public constructor
+    }
+    public static ROIIncomeReportFragment newInstance() {
+        ROIIncomeReportFragment fragment = new ROIIncomeReportFragment();
+        return fragment;
     }
 
     @Override

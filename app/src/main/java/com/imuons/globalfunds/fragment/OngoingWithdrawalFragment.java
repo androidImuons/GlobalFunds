@@ -38,7 +38,10 @@ public class OngoingWithdrawalFragment extends Fragment {
         // Required empty public constructor
     }
 
-
+    public static OngoingWithdrawalFragment newInstance() {
+        OngoingWithdrawalFragment fragment = new OngoingWithdrawalFragment();
+        return fragment;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
