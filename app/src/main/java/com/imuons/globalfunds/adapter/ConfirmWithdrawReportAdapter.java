@@ -10,11 +10,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.imuons.globalfunds.R;
+import com.imuons.globalfunds.dataModel.ConfirWithdralList;
 import com.imuons.globalfunds.fragment.ConfirmedWithdrawalFragment;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,14 +27,15 @@ public class ConfirmWithdrawReportAdapter extends RecyclerView.Adapter<ConfirmWi
 
 
 
-    FragmentActivity activity;
+    Fragment fragment;
+    List<ConfirWithdralList> confirWithdralLists;
     private int selected_postion;
 
-
-    public ConfirmWithdrawReportAdapter(FragmentActivity activity, ConfirmedWithdrawalFragment confirmedWithdrawalFragment) {
-        this.activity=activity;
-
+    public ConfirmWithdrawReportAdapter(Fragment fragment, List<ConfirWithdralList> confirWithdralLists) {
+        this.fragment = fragment;
+        this.confirWithdralLists = confirWithdralLists;
     }
+
 
     @NonNull
     @Override
@@ -42,12 +47,19 @@ public class ConfirmWithdrawReportAdapter extends RecyclerView.Adapter<ConfirmWi
     @Override
     public void onBindViewHolder(@NonNull ViewHoleder holder, int position) {
         holder.hiddenlayout.setVisibility(View.GONE);
+        ConfirWithdralList confirWithdralList = confirWithdralLists.get(position);
+        holder.srno.setText(String.valueOf(position+1));
+        holder.amount.setText(String.valueOf(confirWithdralList.getAmount()));
+        holder.n_w_type.setText(confirWithdralList.getNetworkType());
+        holder.txt_withdrwa_type.setText(String.valueOf(confirWithdralList.getWithdrawType()));
+        holder.txtremark.setText(confirWithdralList.getRemark());
+        holder.txt_date.setText(confirWithdralList.getEntryTime().split(" ")[0].replace("-", "/"));
         if (selected_postion == position) {
             holder.expand_icon.setSelected(true);
             holder.expand_icon.setActivated(true);
             holder.llmain.setActivated(true);
             //creating an animation
-            Animation slideDown = AnimationUtils.loadAnimation(activity, R.anim.slide_down);
+            Animation slideDown = AnimationUtils.loadAnimation(fragment.getContext(), R.anim.slide_down);
             //toggling visibility
             holder.hiddenlayout.setVisibility(View.VISIBLE);
 
@@ -73,13 +85,13 @@ public class ConfirmWithdrawReportAdapter extends RecyclerView.Adapter<ConfirmWi
 
     @Override
     public int getItemCount() {
-        return 0;
+        return confirWithdralLists.size();
     }
 
-//  public   void updateList(List<AwardIncomeRecord> records) {
-//        this.records = records;
-//        notifyDataSetChanged();
-//    }
+  public   void updateList(List<ConfirWithdralList> records) {
+        this.confirWithdralLists = records;
+        notifyDataSetChanged();
+    }
 
     public class ViewHoleder extends RecyclerView.ViewHolder {
         @BindView(R.id.hiddenlayout)
