@@ -1,5 +1,6 @@
 package com.imuons.globalfunds.fragment;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
@@ -113,7 +114,7 @@ public class MakeWorkingWithdrawalFragment extends Fragment {
     }
 
     private void setData(DashBoardDataModel data) {
-        this.data=data;
+        this.data = data;
         txt_working_income.setText(MyPreference.currency_symbol + data.getWorkingWallet());
         txt_working_balance.setText(MyPreference.currency_symbol + data.getWorkingWalletWithdraw());
         txt_working_withdrwa.setText(MyPreference.currency_symbol + data.getWorkingWalletBalance());
@@ -127,8 +128,7 @@ public class MakeWorkingWithdrawalFragment extends Fragment {
             et_amount.setError("Enter Amount");
             et_amount.requestFocus();
         } else {
-            callWorkingWithdrawl(new WithDrawalEntity(String.valueOf(data.getBinaryIncomeBalance()), String.valueOf(data.getDirectIncomeBalance()), String.valueOf(data.getLevelIncomeBalance()), String.valueOf(data.getRoiIncomeBalance()), String.valueOf(data.getTopUpWallet()), String.valueOf(data.getTransferWallet()),
-                    et_amount.getText().toString()));
+            openDialog();
         }
 
 
@@ -174,5 +174,33 @@ public class MakeWorkingWithdrawalFragment extends Fragment {
             // no internet
             Toast.makeText(getContext(), "Please check your internet", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void openDialog() {
+        AlertDialog dialogBuilder = new AlertDialog.Builder(getActivity()).create();
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_withdrwa_confirm, null);
+        TextView Cancel = dialogView.findViewById(R.id.txt_cancel);
+        TextView Submit = dialogView.findViewById(R.id.txt_yes);
+
+        Submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                callWorkingWithdrawl(new WithDrawalEntity(String.valueOf(data.getBinaryIncomeBalance()), String.valueOf(data.getDirectIncomeBalance()), String.valueOf(data.getLevelIncomeBalance()), String.valueOf(data.getRoiIncomeBalance()), String.valueOf(data.getTopUpWallet()), String.valueOf(data.getTransferWallet()), et_amount.getText().toString()));
+                dialogBuilder.dismiss();
+            }
+        });
+        Cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // DO SOMETHINGS
+
+                dialogBuilder.dismiss();
+            }
+        });
+
+        dialogBuilder.setView(dialogView);
+        dialogBuilder.show();
     }
 }

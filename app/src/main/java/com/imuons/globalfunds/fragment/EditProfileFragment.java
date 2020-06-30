@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.imuons.globalfunds.R;
 import com.imuons.globalfunds.dataModel.LoginDataModel;
+import com.imuons.globalfunds.entity.CheckUserEntity;
 import com.imuons.globalfunds.entity.UpdateProfileEnitity;
 import com.imuons.globalfunds.responseModel.CommonResponse;
 import com.imuons.globalfunds.responseModel.ProfileData;
@@ -69,7 +70,7 @@ public class EditProfileFragment extends Fragment {
     @BindView(R.id.sentOtpText)
     TextView sentOtpText;
 
-    List<String> countries ;
+    List<String> countries;
 
     HashMap<String, String> countryMap = new HashMap<>();
 
@@ -89,7 +90,7 @@ public class EditProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_edit_profile, container, false);
         ButterKnife.bind(this, view);
         String[] locales = Locale.getISOCountries();
-      countries = new ArrayList<>();
+        countries = new ArrayList<>();
         callProfileInfoApi();
         countries.add("**Select Country**");
 
@@ -98,7 +99,7 @@ public class EditProfileFragment extends Fragment {
             Locale obj = new Locale("", countryCode);
 
             countries.add(obj.getDisplayCountry());
-            countryMap.put( obj.getCountry() , obj.getDisplayCountry());
+            countryMap.put(obj.getCountry(), obj.getDisplayCountry());
 
         }
         Collections.sort(countries);
@@ -162,41 +163,73 @@ public class EditProfileFragment extends Fragment {
     }
 
     private void setData(ProfileData data) {
-      //  LoginDataModel loginDataModel = new Gson().fromJson(AppCommon.getInstance(EditEditProfileFragment.this.getContext()).getUserObject() , LoginDataModel.class);
+        //  LoginDataModel loginDataModel = new Gson().fromJson(AppCommon.getInstance(EditEditProfileFragment.this.getContext()).getUserObject() , LoginDataModel.class);
         et_fullName.setText(data.getFullname());
         et_emailId.setText(data.getEmail());
         et_phoneNum.setText(data.getMobile());
         et_BTCAddress.setText(data.getBtcAddress());
-        /*int i = 0;
-        for (Map.Entry<String, String> entry : countryMap.entrySet()) {
 
-            if (entry.getValue().equals(data.getCountry())) {
-                System.out.println(entry.getKey());
-                country_category.setSelection(i);
-            }
-            i++;
-        }*/
-       /* if(data.getCountry() != null && !data.getCountry().isEmpty()){
-            for(int i = 0 ; i < countryMap.size() ; i++ ){
-                if()
-            }
-        }*/
-        if(data.getCountry() != null && !data.getCountry().isEmpty()) {
+        if (data.getCountry() != null && !data.getCountry().isEmpty()) {
             country_category.setSelection(countries.indexOf(countryMap.get(data.getCountry())));
         }
 
     }
 
     @OnClick(R.id.btnUpdate)
-    void update(){
+    void update() {
+        if(et_BTCAddress.getText().toString().trim().isEmpty())
         callupdate();
+        else {
+            callCheclUserApi(et_BTCAddress.getText().toString().trim());
+        }
     }
+
+    private void callCheclUserApi(String trim) {
+        if (AppCommon.getInstance(getContext()).isConnectingToInternet(getContext())) {
+            AppCommon.getInstance(getContext()).setNonTouchableFlags(getActivity());
+            AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(getContext()).getToken());
+            final Dialog dialog = ViewUtils.getProgressBar(EditProfileFragment.this.getActivity());
+            Call call = apiService.checkAddress(new CheckUserEntity(trim));
+            call.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+                    AppCommon.getInstance(EditProfileFragment.this.getContext()).clearNonTouchableFlags(EditProfileFragment.this.getActivity());
+                    dialog.dismiss();
+                    CommonResponse authResponse = (CommonResponse) response.body();
+                    if (authResponse != null) {
+                        Log.i("LoginResponse::", new Gson().toJson(authResponse));
+                        if (authResponse.getCode() == 200) {
+                            callupdate();
+                        } else {
+                            et_BTCAddress.setError(authResponse.getMessage());
+                            //Toast.makeText(EditProfileFragment.this.getContext(), authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(EditProfileFragment.this.getContext(), "The user credentials were incorrect", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+                    dialog.dismiss();
+                    AppCommon.getInstance(EditProfileFragment.this.getContext()).clearNonTouchableFlags(EditProfileFragment.this.getActivity());
+                    Toast.makeText(EditProfileFragment.this.getContext(), "Server Error", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+        } else {
+            // no internet
+            Toast.makeText(getContext(), "Please check your internet", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @OnClick(R.id.submitBtn)
-    void submit(){
+    void submit() {
         String otpStr = etOtp.getText().toString().trim();
-        if (otpStr.isEmpty() && otpStr.length() != 6){
+        if (otpStr.isEmpty() && otpStr.length() != 6) {
             etOtp.setError("Please enter valid OTP");
-        }else {
+        } else {
             etOtp.setText("");
             otpLayout.setVisibility(View.GONE);
             String name = et_fullName.getText().toString().trim();
@@ -253,7 +286,7 @@ public class EditProfileFragment extends Fragment {
     }
 
     @OnClick(R.id.cancelBtn)
-    void cancel(){
+    void cancel() {
         etOtp.setText("");
         otpLayout.setVisibility(View.GONE);
     }
@@ -264,7 +297,7 @@ public class EditProfileFragment extends Fragment {
         String email = et_emailId.getText().toString().trim();
         String btcAddress = et_BTCAddress.getText().toString().trim();
         String country = "";
-        if(country_category.getSelectedItemPosition() != 0){
+        if (country_category.getSelectedItemPosition() != 0) {
             for (Map.Entry<String, String> entry : countryMap.entrySet()) {
 
                 if (entry.getValue().equals(countries.get(country_category.getSelectedItemPosition()))) {
@@ -277,7 +310,7 @@ public class EditProfileFragment extends Fragment {
             et_fullName.setError("Please enter your full name");
         } else if (email.isEmpty()) {
             et_emailId.setError("please enter your email id");
-        }  else if (mobile.isEmpty()) {
+        } else if (mobile.isEmpty()) {
             et_phoneNum.setError("please enter your mobile number");
         } else {
 

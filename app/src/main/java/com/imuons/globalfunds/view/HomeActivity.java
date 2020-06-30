@@ -39,7 +39,6 @@ import com.imuons.globalfunds.fragment.OngoingWithdrawalFragment;
 import com.imuons.globalfunds.fragment.ProfileFragment;
 import com.imuons.globalfunds.fragment.ROIIncomeReportFragment;
 import com.imuons.globalfunds.utils.AppCommon;
-import com.imuons.globalfunds.utils.SharedPreferenceUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -29,11 +29,12 @@ public class ConnfirmPaymentAdapter extends RecyclerView.Adapter<ConnfirmPayment
     ConfirmedPaymentsFragment fragment;
     List<ConfirmPaymentRecordModel> recordList;
     private int selected_postion;
-
+    ClickWithdrwa clickWithdrwa;
     public ConnfirmPaymentAdapter(FragmentActivity activity, List<ConfirmPaymentRecordModel> recordList, ConfirmedPaymentsFragment confirmedPaymentsFragment) {
         this.activity=activity;
         this.recordList=recordList;
         fragment=confirmedPaymentsFragment;
+        clickWithdrwa=(ClickWithdrwa)confirmedPaymentsFragment;
     }
 
 
@@ -88,6 +89,33 @@ public class ConnfirmPaymentAdapter extends RecyclerView.Adapter<ConnfirmPayment
         holder.txt_deposit_mode.setText(record.getPaymentType());
         holder.txt_investments.setText(MyPreference.currency_symbol +String.valueOf(record.getTopAmount()));
         holder.txt_status.setText(record.getStatus());
+
+        if(record.getShowwithdraw()==1){
+            if(record.getPWithdraw()==0){
+                    holder.txt_withdrwa_btn.setVisibility(View.VISIBLE);
+                    holder.txt_withdrwa_note.setVisibility(View.GONE);
+            }else{
+                holder.txt_withdrwa_btn.setVisibility(View.GONE);
+                holder.txt_withdrwa_note.setVisibility(View.VISIBLE);
+                holder.txt_withdrwa_note.setText("Withdraw already done ");
+            }
+        }else{
+            if(record.getType()==1){
+                holder.txt_withdrwa_btn.setVisibility(View.GONE);
+                holder.txt_withdrwa_note.setVisibility(View.VISIBLE);
+                holder.txt_withdrwa_note.setText("withdraw after 30 days ");
+            }else{
+                holder.txt_withdrwa_btn.setVisibility(View.GONE);
+                holder.txt_withdrwa_note.setVisibility(View.VISIBLE);
+                holder.txt_withdrwa_note.setText("No withdraw for plan B");
+            }
+        }
+        holder.txt_withdrwa_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickWithdrwa.clickWithdrwa(record);
+            }
+        });
     }
 
     @Override
@@ -126,6 +154,11 @@ public class ConnfirmPaymentAdapter extends RecyclerView.Adapter<ConnfirmPayment
         @BindView(R.id.txt_status)
         TextView txt_status;
 
+        @BindView(R.id.txt_withdrwa_note)
+        TextView txt_withdrwa_note;
+        @BindView(R.id.txt_withdrwa_btn)
+        TextView txt_withdrwa_btn;
+
 
         public ViewHoleder(@NonNull View itemView) {
             super(itemView);
@@ -133,5 +166,8 @@ public class ConnfirmPaymentAdapter extends RecyclerView.Adapter<ConnfirmPayment
         }
 
 
+    }
+    public interface ClickWithdrwa{
+        public void clickWithdrwa(ConfirmPaymentRecordModel model);
     }
 }

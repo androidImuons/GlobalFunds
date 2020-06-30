@@ -11,12 +11,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.imuons.globalfunds.R;
 import com.imuons.globalfunds.dataModel.ConfirWithdralList;
-import com.imuons.globalfunds.fragment.ConfirmedWithdrawalFragment;
 
 import java.util.List;
 
@@ -45,7 +43,7 @@ public class ConfirmWithdrawReportAdapter extends RecyclerView.Adapter<ConfirmWi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHoleder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHoleder holder, int position)  {
         holder.hiddenlayout.setVisibility(View.GONE);
         ConfirWithdralList confirWithdralList = confirWithdralLists.get(position);
         holder.srno.setText(String.valueOf(position+1));

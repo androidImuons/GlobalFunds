@@ -9,7 +9,7 @@
     android:orientation="vertical"
     local:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    local:titleTextColor="@color/white">
+    local:titleTextColor="@color/txt_color_green">
 
     <FrameLayout
         android:layout_width="wrap_content"
