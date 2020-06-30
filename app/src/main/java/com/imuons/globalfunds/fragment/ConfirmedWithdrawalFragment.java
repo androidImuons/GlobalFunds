@@ -22,14 +22,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.Gson;
 import com.imuons.globalfunds.R;
 import com.imuons.globalfunds.adapter.ConfirmWithdrawReportAdapter;
-import com.imuons.globalfunds.dataModel.RoiIncomeDataModel;
-import com.imuons.globalfunds.responseModel.RoiIncomeReportResponse;
+import com.imuons.globalfunds.dataModel.ConfirWithdralData;
+import com.imuons.globalfunds.dataModel.ConfirWithdralList;
+import com.imuons.globalfunds.responseModel.ConfirmWithdralReportResponse;
 import com.imuons.globalfunds.retrofit.AppService;
 import com.imuons.globalfunds.retrofit.ServiceGenerator;
 import com.imuons.globalfunds.utils.AppCommon;
 import com.imuons.globalfunds.utils.ViewUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -50,6 +53,7 @@ public class ConfirmedWithdrawalFragment extends Fragment {
     EditText searchbyid;
     private View view;
     private ConfirmWithdrawReportAdapter confirm_report_adapter;
+    List<ConfirWithdralList> confirWithdralLists;
 
     public ConfirmedWithdrawalFragment() {
         // Required empty public constructor
@@ -72,9 +76,9 @@ public class ConfirmedWithdrawalFragment extends Fragment {
     private void initUI() {
         recycle_view.setHasFixedSize(true);
         recycle_view.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
-
-        confirm_report_adapter = new ConfirmWithdrawReportAdapter(getActivity(),
-                ConfirmedWithdrawalFragment.this);
+        confirWithdralLists = new ArrayList<>();
+        confirm_report_adapter = new ConfirmWithdrawReportAdapter(
+                ConfirmedWithdrawalFragment.this , confirWithdralLists);
         recycle_view.setAdapter(confirm_report_adapter);
 
         searchSpinnner();
@@ -128,13 +132,14 @@ public class ConfirmedWithdrawalFragment extends Fragment {
             roiMap.put("length", valueOf);
             roiMap.put("search[value]", s1);
             roiMap.put("search[regex]", b);
-            Call call = apiService.roiIncome(roiMap);
+            roiMap.put("withdraw_type", "2");
+            Call call = apiService.cofirmWithdralApi(roiMap);
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
                     AppCommon.getInstance(getActivity()).clearNonTouchableFlags(getActivity());
                     dialog.dismiss();
-                    RoiIncomeReportResponse authResponse = (RoiIncomeReportResponse) response.body();
+                    ConfirmWithdralReportResponse authResponse = (ConfirmWithdralReportResponse) response.body();
                     if (authResponse != null) {
                         Log.i("packgae list::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
@@ -163,8 +168,8 @@ public class ConfirmedWithdrawalFragment extends Fragment {
         }
     }
 
-    private void setData(RoiIncomeDataModel data) {
-//        records = data.getRecords();
-//        roiIncomeReportAdapater.updateList(data.getRecords());
+    private void setData(ConfirWithdralData data) {
+        confirWithdralLists = data.getRecords();
+       confirm_report_adapter.updateList(data.getRecords());
     }
 }
