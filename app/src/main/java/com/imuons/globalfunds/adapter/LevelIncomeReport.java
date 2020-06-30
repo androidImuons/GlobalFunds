@@ -15,6 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.imuons.globalfunds.R;
 import com.imuons.globalfunds.fragment.LevelIncomeReportFragment;
+import com.imuons.globalfunds.responseModel.LevelIncomeRecordModel;
+import com.imuons.globalfunds.utils.MyPreference;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,10 +26,12 @@ import butterknife.ButterKnife;
 public class LevelIncomeReport extends RecyclerView.Adapter<LevelIncomeReport.ViewHoleder> {
 
     FragmentActivity activity;
+    List<LevelIncomeRecordModel> recordModelList;
     private int selected_postion;
 
-    public LevelIncomeReport(FragmentActivity activity, LevelIncomeReportFragment levelIncomeReportFragment) {
+    public LevelIncomeReport(FragmentActivity activity, LevelIncomeReportFragment levelIncomeReportFragment, List<LevelIncomeRecordModel> recordModelList) {
         this.activity = activity;
+        this.recordModelList = recordModelList;
     }
 
     @NonNull
@@ -54,12 +60,37 @@ public class LevelIncomeReport extends RecyclerView.Adapter<LevelIncomeReport.Vi
             holder.expand_icon.setActivated(false);
             holder.llmain.setActivated(false);
         }
+        setdata(holder, recordModelList.get(position), position);
+        holder.llmain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selected_postion = position;
+                notifyDataSetChanged();
+
+            }
+        });
     }
 
+    private void setdata(ViewHoleder holder, LevelIncomeRecordModel levelIncomeRecordModel, int position) {
+        holder.srno.setText(String.valueOf(position + 1));
+        holder.txt_user_id.setText(levelIncomeRecordModel.getFromUserId());
+        holder.txt_name.setText(levelIncomeRecordModel.getFromFullname());
+        holder.txt_date.setText(levelIncomeRecordModel.getEntryTime());
+        holder.txt_amount.setText(MyPreference.currency_symbol + levelIncomeRecordModel.getAmount());
+        holder.txt_laps_amount.setText(String.valueOf(levelIncomeRecordModel.getLapsAmount()));
+        holder.txt_topup_id.setText(levelIncomeRecordModel.getPin());
+        holder.txt_status.setText(levelIncomeRecordModel.getStatus());
+
+    }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return recordModelList.size();
+    }
+
+    public void update(List<LevelIncomeRecordModel> recordModelList) {
+        this.recordModelList = recordModelList;
+        notifyDataSetChanged();
     }
 
     public class ViewHoleder extends RecyclerView.ViewHolder {

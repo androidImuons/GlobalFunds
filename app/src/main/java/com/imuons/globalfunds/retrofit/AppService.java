@@ -6,16 +6,21 @@ import com.imuons.globalfunds.entity.ChangePasswordEnity;
 import com.imuons.globalfunds.entity.LoginEntity;
 import com.imuons.globalfunds.entity.RegisterEntity;
 import com.imuons.globalfunds.entity.UpdateProfileEnitity;
+import com.imuons.globalfunds.responseModel.AwardIncomeReportResponse;
 import com.imuons.globalfunds.responseModel.CommonResponse;
 import com.imuons.globalfunds.responseModel.ConfirmPaymentReportResponse;
 import com.imuons.globalfunds.responseModel.DashBoardResponseModel;
+import com.imuons.globalfunds.responseModel.DirectBusinessReportResponse;
 import com.imuons.globalfunds.responseModel.GetAddressResponse;
+import com.imuons.globalfunds.responseModel.LevelIncomeReportResponse;
+import com.imuons.globalfunds.responseModel.LevelROIIncomeReportResponse;
 import com.imuons.globalfunds.responseModel.LoginResponse;
 import com.imuons.globalfunds.responseModel.OngoingPaymentResponseModel;
 import com.imuons.globalfunds.responseModel.PckageResponseModel;
 import com.imuons.globalfunds.responseModel.ProfileResponse;
 import com.imuons.globalfunds.responseModel.ReferalLinkResponseModel;
 import com.imuons.globalfunds.responseModel.RegisterResponse;
+import com.imuons.globalfunds.responseModel.RoiIncomeReportResponse;
 
 import java.util.Map;
 
@@ -70,6 +75,40 @@ public interface AppService {
     );
     @GET("get-reference-id")
     Call<ReferalLinkResponseModel>GetReferal();
+
+    //Income Report:- ROI Income Report
+    @POST("roi-income")
+    Call<RoiIncomeReportResponse> roiIncome(
+            @Body Map<String, Object> map
+    );
+    @POST("level-income")
+    Call<LevelIncomeReportResponse> level_income(
+            @Body Map<String, Object> map
+    );
+    @POST("level-income-roi")
+    Call<LevelROIIncomeReportResponse> level_income_roi(
+            @Body Map<String, Object> map
+    );
+
+    //Income Report:- AwardIncome
+    @POST("userWinnerList")
+    Call<AwardIncomeReportResponse> awardIncome(
+            @Body Map<String, Object> map
+    );
+
+    //Income Report:- Direct Business report
+    @POST("direct-business")
+    Call<DirectBusinessReportResponse> directBusinessReport(
+            @Body Map<String, Object> map
+    );
+
+    @POST("direct_list")
+    Call<DirectUserResponseModel> DirectUserApit(@Body Map<String, Object> map);
+    @POST("level-view")
+    Call<LevelViewResponseModel> levelViewApi(@Body Map<String, Object> map);
+    @POST("get-level")
+    Call<GetLevelResponse> GetlevelViewApi();
+
 
 
 }

@@ -14,7 +14,11 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.imuons.globalfunds.R;
+import com.imuons.globalfunds.dataModel.RoiIncomeRecord;
 import com.imuons.globalfunds.fragment.ROIIncomeReportFragment;
+import com.imuons.globalfunds.utils.MyPreference;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,9 +28,11 @@ public class ROIIncomeReportAdapater extends RecyclerView.Adapter<ROIIncomeRepor
 
     FragmentActivity activity;
     private int selected_postion;
-
-    public ROIIncomeReportAdapater(FragmentActivity activity, ROIIncomeReportFragment roiIncomeReportFragment) {
+    List<RoiIncomeRecord> records;
+    public ROIIncomeReportAdapater(FragmentActivity activity,
+                                   ROIIncomeReportFragment roiIncomeReportFragment, List<RoiIncomeRecord> records) {
         this.activity = activity;
+        this.records=records;
     }
 
     @NonNull
@@ -55,12 +61,36 @@ public class ROIIncomeReportAdapater extends RecyclerView.Adapter<ROIIncomeRepor
             holder.expand_icon.setActivated(false);
             holder.llmain.setActivated(false);
         }
+setData(holder,records.get(position),position);
+        holder.llmain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selected_postion = position;
+                notifyDataSetChanged();
+
+            }
+        });
+    }
+
+    private void setData(ViewHoleder holder, RoiIncomeRecord roiIncomeRecord, int position) {
+        holder.srno.setText(String.valueOf(position + 1));
+        holder.deposit_id.setText(roiIncomeRecord.getPin());
+        holder.amount.setText(MyPreference.currency_symbol+roiIncomeRecord.getOnAmount());
+        holder.txt_package.setText(roiIncomeRecord.getName());
+        holder.txt_status.setText(roiIncomeRecord.getStatus());
+        holder.txt_roi_amount.setText(MyPreference.currency_symbol+roiIncomeRecord.getAmount());
+        holder.txt_date.setText(roiIncomeRecord.getEntryTime());
     }
 
 
     @Override
     public int getItemCount() {
-        return 0;
+        return records.size();
+    }
+
+   public void updateList(List<RoiIncomeRecord> records) {
+        this.records=records;
+        notifyDataSetChanged();
     }
 
     public class ViewHoleder extends RecyclerView.ViewHolder {

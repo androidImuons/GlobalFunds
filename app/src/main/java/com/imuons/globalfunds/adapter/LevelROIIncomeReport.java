@@ -15,6 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.imuons.globalfunds.R;
 import com.imuons.globalfunds.fragment.LevelROIIncomeFragment;
+import com.imuons.globalfunds.responseModel.LevelROIIncomeRecordModel;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,8 +27,9 @@ public class LevelROIIncomeReport extends RecyclerView.Adapter<LevelROIIncomeRep
     FragmentActivity activity;
     private int selected_postion;
 
-    public LevelROIIncomeReport(FragmentActivity activity, LevelROIIncomeFragment levelROIIncomeFragment) {
+    public LevelROIIncomeReport(FragmentActivity activity, LevelROIIncomeFragment levelROIIncomeFragment, List<LevelROIIncomeRecordModel> recordModelList) {
         this.activity = activity;
+        this.recordModelList=recordModelList;
     }
 
     @NonNull
@@ -59,7 +63,11 @@ public class LevelROIIncomeReport extends RecyclerView.Adapter<LevelROIIncomeRep
 
     @Override
     public int getItemCount() {
-        return 0;
+        return recordModelList.size();
+    }
+    List<LevelROIIncomeRecordModel> recordModelList;
+    public void update(List<LevelROIIncomeRecordModel> recordModelList) {
+        this.recordModelList=recordModelList;
     }
 
     public class ViewHoleder extends RecyclerView.ViewHolder {

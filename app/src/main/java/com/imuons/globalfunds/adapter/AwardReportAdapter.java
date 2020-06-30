@@ -3,23 +3,35 @@ package com.imuons.globalfunds.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.imuons.globalfunds.R;
+import com.imuons.globalfunds.dataModel.AwardIncomeRecord;
+import com.imuons.globalfunds.fragment.AwardIncomeFragment;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AwardReportAdapter extends RecyclerView.Adapter<AwardReportAdapter.ViewHoleder>  {
+public class AwardReportAdapter extends RecyclerView.Adapter<AwardReportAdapter.ViewHoleder> {
 
 
-    public AwardReportAdapter(){
+    List<AwardIncomeRecord> records;
+    FragmentActivity activity;
+    private int selected_postion;
 
+    public AwardReportAdapter(FragmentActivity activity, AwardIncomeFragment awardIncomeFragment, List<AwardIncomeRecord> records) {
+        this.activity = activity;
+        this.records = records;
     }
 
     @NonNull
@@ -31,13 +43,50 @@ public class AwardReportAdapter extends RecyclerView.Adapter<AwardReportAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHoleder holder, int position) {
+        holder.hiddenlayout.setVisibility(View.GONE);
+        if (selected_postion == position) {
+            holder.expand_icon.setSelected(true);
+            holder.expand_icon.setActivated(true);
+            holder.llmain.setActivated(true);
+            //creating an animation
+            Animation slideDown = AnimationUtils.loadAnimation(activity, R.anim.slide_down);
+            //toggling visibility
+            holder.hiddenlayout.setVisibility(View.VISIBLE);
 
+            //adding sliding effect
+            holder.hiddenlayout.startAnimation(slideDown);
+        } else {
+            holder.llmain.setSelected(false);
+            holder.expand_icon.setActivated(false);
+            holder.llmain.setActivated(false);
+        }
+        setData(holder,records.get(position),position);
+        holder.llmain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selected_postion = position;
+                notifyDataSetChanged();
+
+            }
+        });
     }
 
+    private void setData(ViewHoleder holder, AwardIncomeRecord awardIncomeRecord, int position) {
+        holder.srno.setText(String.valueOf(position + 1));
+        holder.txt_award_id.setText(String.valueOf(awardIncomeRecord.getAwardId()));
+        holder.award.setText(String.valueOf(awardIncomeRecord.getAward()));
+        holder.txt_businesss_req.setText(String.valueOf(awardIncomeRecord.getBusinessRequired()));
+        holder.txt_date.setText(awardIncomeRecord.getEntryTime());
+    }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return records.size();
+    }
+
+  public   void updateList(List<AwardIncomeRecord> records) {
+        this.records = records;
+        notifyDataSetChanged();
     }
 
     public class ViewHoleder extends RecyclerView.ViewHolder {
@@ -57,8 +106,6 @@ public class AwardReportAdapter extends RecyclerView.Adapter<AwardReportAdapter.
         TextView txt_businesss_req;
         @BindView(R.id.txt_date)
         TextView txt_date;
-
-
 
 
         public ViewHoleder(@NonNull View itemView) {

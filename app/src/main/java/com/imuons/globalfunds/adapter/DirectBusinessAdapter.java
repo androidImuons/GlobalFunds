@@ -8,18 +8,27 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.imuons.globalfunds.R;
+import com.imuons.globalfunds.dataModel.DirectBusinessRecord;
+import com.imuons.globalfunds.fragment.DirectIncomeReport;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DirectBusinessAdapter extends RecyclerView.Adapter<DirectBusinessAdapter.ViewHoleder>  {
+public class DirectBusinessAdapter extends RecyclerView.Adapter<DirectBusinessAdapter.ViewHoleder> {
 
+    FragmentActivity activity;
+    List<DirectBusinessRecord> records;
+    private int selected_postion;
 
-    public DirectBusinessAdapter(){
-
+    public DirectBusinessAdapter(FragmentActivity activity, DirectIncomeReport directIncomeReport, List<DirectBusinessRecord> records) {
+        this.activity = activity;
+        this.records = records;
     }
 
     @NonNull
@@ -31,13 +40,47 @@ public class DirectBusinessAdapter extends RecyclerView.Adapter<DirectBusinessAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHoleder holder, int position) {
+//        holder.hiddenlayout.setVisibility(View.GONE);
+//        if (selected_postion == position) {
+//            holder.expand_icon.setSelected(true);
+//            holder.expand_icon.setActivated(true);
+//            holder.llmain.setActivated(true);
+//            //creating an animation
+//            Animation slideDown = AnimationUtils.loadAnimation(activity, R.anim.slide_down);
+//            //toggling visibility
+//            holder.hiddenlayout.setVisibility(View.VISIBLE);
+//
+//            //adding sliding effect
+//            holder.hiddenlayout.startAnimation(slideDown);
+//        } else {
+//            holder.llmain.setSelected(false);
+//            holder.expand_icon.setActivated(false);
+//            holder.llmain.setActivated(false);
+//        }
+        setdata(holder, records.get(position), position);
+        holder.llmain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selected_postion = position;
+               // notifyDataSetChanged();
 
+            }
+        });
     }
 
+    private void setdata(ViewHoleder holder, DirectBusinessRecord directBusinessRecord, int position) {
+        holder.srno.setText(String.valueOf(position + 1));
+        holder.txt_direct_business.setText(String.valueOf(directBusinessRecord.getTotalBusiness()));
+    }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return records.size();
+    }
+
+    public void updateList(List<DirectBusinessRecord> records) {
+        this.records = records;
+        notifyDataSetChanged();
     }
 
     public class ViewHoleder extends RecyclerView.ViewHolder {
@@ -51,8 +94,6 @@ public class DirectBusinessAdapter extends RecyclerView.Adapter<DirectBusinessAd
         TextView srno;
         @BindView(R.id.txt_direct_business)
         TextView txt_direct_business;
-
-
 
 
         public ViewHoleder(@NonNull View itemView) {
