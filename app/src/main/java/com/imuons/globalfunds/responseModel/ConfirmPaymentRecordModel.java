@@ -9,7 +9,7 @@ public class ConfirmPaymentRecordModel {
     @Expose
     private Integer srno;
     @SerializedName("usd_rate")
-    @Expose
+    @Expose 
     private Integer usdRate;
     @SerializedName("type")
     @Expose
