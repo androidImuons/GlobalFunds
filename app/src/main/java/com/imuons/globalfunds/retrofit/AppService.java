@@ -10,6 +10,7 @@ import com.imuons.globalfunds.entity.WithDrawalEntity;
 import com.imuons.globalfunds.responseModel.AwardIncomeReportResponse;
 import com.imuons.globalfunds.responseModel.CommonResponse;
 import com.imuons.globalfunds.responseModel.ConfirmPaymentReportResponse;
+import com.imuons.globalfunds.responseModel.ConfirmWithdralReportResponse;
 import com.imuons.globalfunds.responseModel.DashBoardResponseModel;
 import com.imuons.globalfunds.responseModel.DirectBusinessReportResponse;
 import com.imuons.globalfunds.responseModel.DirectUserResponseModel;
@@ -124,6 +125,7 @@ public interface AppService {
     );
 
     @POST("all-withdraw-confirm-reports")
+
     Call<ConfirmWithdralReportResponse>cofirmWithdralApi(
             @Body Map<String, Object> map
     );
