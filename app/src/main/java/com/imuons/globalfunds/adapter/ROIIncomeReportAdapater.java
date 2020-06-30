@@ -79,7 +79,7 @@ setData(holder,records.get(position),position);
         holder.txt_package.setText(roiIncomeRecord.getName());
         holder.txt_status.setText(roiIncomeRecord.getStatus());
         holder.txt_roi_amount.setText(MyPreference.currency_symbol+roiIncomeRecord.getAmount());
-        holder.txt_date.setText(roiIncomeRecord.getEntryTime());
+        holder.txt_date.setText(roiIncomeRecord.getEntryTime().split(" ")[0].replace("-", "/"));
     }
 
 

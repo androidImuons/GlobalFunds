@@ -50,10 +50,10 @@
                     android:id="@+id/spinner_show"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:editable="false"
-                    android:focusableInTouchMode="true"
                     android:singleLine="true"
-                    android:textSize="14dp"/>
+                    android:background="@android:color/transparent"
+                    android:textSize="18dp"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
