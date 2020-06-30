@@ -23,6 +23,7 @@ import com.imuons.globalfunds.fragment.AwardIncomeFragment;
 import com.imuons.globalfunds.fragment.ChangePasswordFragment;
 import com.imuons.globalfunds.fragment.ConfirmedPaymentsFragment;
 import com.imuons.globalfunds.fragment.ConfirmedWithdrawalFragment;
+import com.imuons.globalfunds.fragment.DirectIncomeReport;
 import com.imuons.globalfunds.fragment.DirectUserListFragment;
 import com.imuons.globalfunds.fragment.EditProfileFragment;
 import com.imuons.globalfunds.fragment.HomeFragment;
@@ -245,6 +246,14 @@ public class HomeActivity extends AppCompatActivity {
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
                                 break;
+                            case 4:
+                                is_home = false;
+                                fragmentManager.beginTransaction().replace(R.id.content_frame,
+                                        DirectIncomeReport.newInstance()).commit();
+                                getSupportActionBar().setTitle("Direct Business Report");
+                                mExpandableListView.setItemChecked(childPosition, true);
+                                mExpandableListView.setSelection(childPosition);
+                                break;
                         }
                         break;
                     case 5:
@@ -346,6 +355,7 @@ public class HomeActivity extends AppCompatActivity {
         incomereport.add("Level Income Report");
         incomereport.add("Level ROI Income Report");
         incomereport.add("Award Income Report");
+        incomereport.add("Direct Business Report");
 
         //six
         ArrayList<String> withdrawal = new ArrayList<String>();

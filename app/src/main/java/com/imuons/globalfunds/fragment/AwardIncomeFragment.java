@@ -17,8 +17,8 @@ public class AwardIncomeFragment extends Fragment {
     public AwardIncomeFragment() {
         // Required empty public constructor
     }
-    public static LevelViewFragment newInstance() {
-        LevelViewFragment fragment = new LevelViewFragment();
+    public static AwardIncomeFragment newInstance() {
+        AwardIncomeFragment fragment = new AwardIncomeFragment();
         return fragment;
     }
 

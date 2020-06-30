@@ -17,8 +17,8 @@ public class ConfirmedWithdrawalFragment extends Fragment {
     public ConfirmedWithdrawalFragment() {
         // Required empty public constructor
     }
-    public static LevelViewFragment newInstance() {
-        LevelViewFragment fragment = new LevelViewFragment();
+    public static ConfirmedWithdrawalFragment newInstance() {
+        ConfirmedWithdrawalFragment fragment = new ConfirmedWithdrawalFragment();
         return fragment;
     }
 

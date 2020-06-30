@@ -18,8 +18,8 @@ public class LevelROIIncomeFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static LevelViewFragment newInstance() {
-        LevelViewFragment fragment = new LevelViewFragment();
+    public static LevelROIIncomeFragment newInstance() {
+        LevelROIIncomeFragment fragment = new LevelROIIncomeFragment();
         return fragment;
     }
     @Override

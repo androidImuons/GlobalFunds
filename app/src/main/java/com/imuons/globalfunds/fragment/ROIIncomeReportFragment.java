@@ -15,8 +15,8 @@ public class ROIIncomeReportFragment extends Fragment {
     public ROIIncomeReportFragment() {
         // Required empty public constructor
     }
-    public static LevelViewFragment newInstance() {
-        LevelViewFragment fragment = new LevelViewFragment();
+    public static ROIIncomeReportFragment newInstance() {
+        ROIIncomeReportFragment fragment = new ROIIncomeReportFragment();
         return fragment;
     }
 
