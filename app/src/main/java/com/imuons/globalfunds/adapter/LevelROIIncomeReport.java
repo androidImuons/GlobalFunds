@@ -3,23 +3,29 @@ package com.imuons.globalfunds.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.imuons.globalfunds.R;
+import com.imuons.globalfunds.fragment.LevelROIIncomeFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class LevelROIIncomeReport extends RecyclerView.Adapter<LevelROIIncomeReport.ViewHoleder>  {
+public class LevelROIIncomeReport extends RecyclerView.Adapter<LevelROIIncomeReport.ViewHoleder> {
 
+    FragmentActivity activity;
+    private int selected_postion;
 
-    public LevelROIIncomeReport(){
-
+    public LevelROIIncomeReport(FragmentActivity activity, LevelROIIncomeFragment levelROIIncomeFragment) {
+        this.activity = activity;
     }
 
     @NonNull
@@ -31,7 +37,23 @@ public class LevelROIIncomeReport extends RecyclerView.Adapter<LevelROIIncomeRep
 
     @Override
     public void onBindViewHolder(@NonNull ViewHoleder holder, int position) {
+        holder.hiddenlayout.setVisibility(View.GONE);
+        if (selected_postion == position) {
+            holder.expand_icon.setSelected(true);
+            holder.expand_icon.setActivated(true);
+            holder.llmain.setActivated(true);
+            //creating an animation
+            Animation slideDown = AnimationUtils.loadAnimation(activity, R.anim.slide_down);
+            //toggling visibility
+            holder.hiddenlayout.setVisibility(View.VISIBLE);
 
+            //adding sliding effect
+            holder.hiddenlayout.startAnimation(slideDown);
+        } else {
+            holder.llmain.setSelected(false);
+            holder.expand_icon.setActivated(false);
+            holder.llmain.setActivated(false);
+        }
     }
 
 

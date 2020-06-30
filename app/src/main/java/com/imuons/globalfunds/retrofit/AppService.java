@@ -70,4 +70,6 @@ public interface AppService {
     );
     @GET("get-reference-id")
     Call<ReferalLinkResponseModel>GetReferal();
+
+
 }
