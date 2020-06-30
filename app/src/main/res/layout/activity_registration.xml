@@ -185,6 +185,7 @@
                         android:textColorHint="@color/white"
                         android:paddingRight="10dp"
                         android:paddingLeft="10dp"
+                        android:maxLength="10"
                         android:background="@android:color/transparent"/>
                 </RelativeLayout>
 
@@ -309,12 +310,14 @@
                 android:textColor="@color/white"/>
 
             <TextView
+                android:id="@+id/txtLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/weHaveAcc"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="40dp"
                 android:textColor="#4f9f8d"
+                android:onClick="gotoLogin"
                 android:gravity="center"/>
         </LinearLayout>
     </ScrollView>
