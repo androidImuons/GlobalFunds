@@ -18,6 +18,7 @@ import com.google.gson.Gson;
 import com.imuons.globalfunds.R;
 import com.imuons.globalfunds.responseModel.DashBoardDataModel;
 import com.imuons.globalfunds.responseModel.DashBoardResponseModel;
+import com.imuons.globalfunds.responseModel.ReferalLinkResponseModel;
 import com.imuons.globalfunds.retrofit.AppService;
 import com.imuons.globalfunds.retrofit.ServiceGenerator;
 import com.imuons.globalfunds.utils.AppCommon;
@@ -104,8 +105,8 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, view);
-       link= "https://www.globalfundsgroup.co/global-funds/user#/register?ref_id=" + AppCommon.getInstance(getActivity()).getUserId();
-        txtlink.setText(link);
+//       link= "https://www.globalfundsgroup.co/global-funds/user#/register?ref_id=" + AppCommon.getInstance(getActivity()).getUserId();
+//
         return view;
     }
 
@@ -113,6 +114,7 @@ public class HomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
         getDashBoard();
+        getReferal();
     }
 
     public void getDashBoard() {
@@ -154,6 +156,49 @@ public class HomeFragment extends Fragment {
             Toast.makeText(getContext(), "Please check your internet", Toast.LENGTH_SHORT).show();
         }
     }
+    public void
+    getReferal() {
+        if (AppCommon.getInstance(getContext()).isConnectingToInternet(getContext())) {
+            AppCommon.getInstance(getContext()).setNonTouchableFlags(getActivity());
+            AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(getContext()).getToken());
+            final Dialog dialog = ViewUtils.getProgressBar(HomeFragment.this.getActivity());
+            Call call = apiService.GetReferal();
+            call.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+                    AppCommon.getInstance(HomeFragment.this.getContext()).clearNonTouchableFlags(HomeFragment.this.getActivity());
+                    dialog.dismiss();
+                    ReferalLinkResponseModel authResponse = (ReferalLinkResponseModel) response.body();
+                    if (authResponse != null) {
+                        Log.i("LoginResponse::", new Gson().toJson(authResponse));
+                        if (authResponse.getCode() == 200) {
+                           link=authResponse.getData().getLink();
+                            txtlink.setText(link);
+                        } else {
+                            //                            setData(authResponse.getData());
+                            Toast.makeText(HomeFragment.this.getContext(), authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(getContext(), "The user credentials were incorrect", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+                    dialog.dismiss();
+                    AppCommon.getInstance(getActivity()).clearNonTouchableFlags(getActivity());
+                    Toast.makeText(getActivity(), "Server Error", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+        } else {
+            // no internet
+            Toast.makeText(getContext(), "Please check your internet", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 
     private void setData(DashBoardDataModel data) {
         this.data = data;

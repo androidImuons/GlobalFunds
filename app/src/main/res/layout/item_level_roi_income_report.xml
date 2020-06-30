@@ -55,7 +55,7 @@
 
 
             <TextView
-                android:id="@+id/deposit_id"
+                android:id="@+id/txt_user_id"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
@@ -68,7 +68,7 @@
                 />
 
             <TextView
-                android:id="@+id/amount"
+                android:id="@+id/txt_name"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
@@ -108,12 +108,12 @@
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat_regular"
-                android:text="Package"
+                android:text="Amount"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/txt_package"
+                android:id="@+id/txt_amount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -138,12 +138,12 @@
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat_regular"
-                android:text="Deposit Type"
+                android:text="Laps Amount"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/txt_dep_type"
+                android:id="@+id/txt_laps_amount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -167,41 +167,12 @@
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat_regular"
-                android:text="Deposit Mode"
+                android:text="Topup Id"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/txt_deposit_mode"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat_regular"
-                android:text=""
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat_regular"
-                android:text="Investments"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/txt_investments"
+                android:id="@+id/txt_topup_id"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

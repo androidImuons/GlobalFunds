@@ -14,6 +14,7 @@ import com.imuons.globalfunds.responseModel.LoginResponse;
 import com.imuons.globalfunds.responseModel.OngoingPaymentResponseModel;
 import com.imuons.globalfunds.responseModel.PckageResponseModel;
 import com.imuons.globalfunds.responseModel.ProfileResponse;
+import com.imuons.globalfunds.responseModel.ReferalLinkResponseModel;
 import com.imuons.globalfunds.responseModel.RegisterResponse;
 
 import java.util.Map;
@@ -67,4 +68,6 @@ public interface AppService {
     Call<CommonResponse>updateProfile(
             @Body UpdateProfileEnitity upadteProfile
     );
+    @GET("get-reference-id")
+    Call<ReferalLinkResponseModel>GetReferal();
 }
