@@ -25,16 +25,15 @@
             android:gravity="center"
             android:visibility="visible">
 
-            <TextView
+            <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="35dp"
                 android:layout_weight="1"
-                android:fontFamily="sans-serif"
                 android:gravity="center"
-                android:text="User Id"
                 android:textColor="@color/white"
                 android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:src="@drawable/profile"/>
 
             <TextView
                 android:id="@+id/tv_user"
@@ -44,9 +43,9 @@
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:textAllCaps="true"
-                android:textSize="12sp"
+                android:textSize="10sp"
                 android:textStyle="bold"
-                />
+                android:maxLength="15"/>
         </LinearLayout>
     </FrameLayout>
 

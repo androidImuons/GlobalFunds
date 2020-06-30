@@ -93,6 +93,16 @@ public class AppCommon {
         editor.apply();
     }
 
+    public String getName() {
+        SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE);
+        return prefs.getString(MyPreference.name, "");
+    }
+    public void setName(String name) {
+        SharedPreferences.Editor editor = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE).edit();
+        editor.putString(MyPreference.name, name);
+        editor.apply();
+    }
+
     public void onHideKeyBoard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         //Find the currently focused view, so we can grab the correct window token from it.

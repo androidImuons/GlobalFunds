@@ -93,6 +93,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             Log.i("LoginResponse::", new Gson().toJson(authResponse));
                             if (authResponse.getCode() == 200) {
                                 AppCommon.getInstance(RegistrationActivity.this).setPassword(et_password.getText().toString().trim());
+                                AppCommon.getInstance(RegistrationActivity.this).setName(et_fullName.getText().toString().trim());
 
                                 startActivity(new Intent(RegistrationActivity.this, CongratulationPage.class).putExtra("userId", authResponse.getData().getUserid()));
                                 // AppCommon.getInstance(RegistrationActivity.this).showDialog(RegistrationActivity.this, "Hello " + name + "\nYour user UserId is: " + authResponse.getData().getUserid() + "\n and Password is: " + password + "\nPlease login with userId and password");
