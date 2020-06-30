@@ -109,6 +109,14 @@ public interface AppService {
     @POST("get-level")
     Call<GetLevelResponse> GetlevelViewApi();
 
+    @POST("withdraw-income")
+    Call<CommonResponse>withDrawWorkingApi(
+            @Body WithDrawalEntity withDrawalEntity
+    );
+    @POST("all-withdraw-pending-reports")
+    Call<PenddingWithdrwalResponse>withDrawPendingApi(
+            @Body Map<String, Object> map
+    );
 
 
 }
