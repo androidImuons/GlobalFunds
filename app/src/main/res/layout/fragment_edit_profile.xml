@@ -18,28 +18,22 @@
             android:paddingBottom="40dp">
 
 
-            <ImageView
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/logo_300" />
-
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/amazon_bold"
-                android:text="Global Funds Group"
-                android:textAllCaps="true"
-                android:textColor="#4f9f8d"
-                android:textSize="22sp" />
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="@dimen/dp20"
+                android:layout_marginRight="50dp"
+                android:orientation="horizontal"
+                android:text="Full Name"
+                android:textColor="#147979"
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/dp5"
                 android:layout_marginRight="40dp"
                 android:orientation="horizontal">
 
@@ -78,12 +72,23 @@
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="50dp"
+                android:orientation="horizontal"
+                android:text="Email"
+                android:textColor="#147979"
+                android:textSize="14sp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="40dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="@dimen/dp5"
+                android:layout_marginRight="45dp"
                 android:orientation="horizontal">
 
                 <RelativeLayout
@@ -121,11 +126,22 @@
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="50dp"
+                android:orientation="horizontal"
+                android:text="Phone Number"
+                android:textColor="#147979"
+                android:textSize="14sp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="40dp"
                 android:orientation="horizontal">
 
@@ -164,11 +180,22 @@
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="50dp"
+                android:orientation="horizontal"
+                android:text="Country"
+                android:textColor="#147979"
+                android:textSize="14sp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="40dp"
                 android:orientation="horizontal">
 
@@ -192,28 +219,29 @@
                     android:layout_weight="8"
                     android:background="@drawable/half_bg_green">
 
-                  <!--  <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/et_password"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@android:color/transparent"
-                        android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
-                        android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
-                        android:editable="false"
-                        android:hint="Country"
-                        android:inputType="text"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white" />-->
+                    <!--  <androidx.appcompat.widget.AppCompatSpinner
+                          android:id="@+id/et_password"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:background="@android:color/transparent"
+                          android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+                          android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+                          android:editable="false"
+                          android:hint="Country"
+                          android:inputType="text"
+                          android:paddingLeft="10dp"
+                          android:paddingRight="10dp"
+                          android:textColor="@color/white"
+                          android:textColorHint="@color/white" />-->
 
                     <Spinner
                         android:id="@+id/country_category"
                         android:layout_width="fill_parent"
                         android:layout_height="match_parent"
-                        android:textSize="16sp"
                         android:background="@null"
-                        android:minHeight="0dp" />
+                        android:minHeight="0dp"
+                        android:textSize="16sp" />
+
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -224,11 +252,22 @@
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="50dp"
+                android:orientation="horizontal"
+                android:text="BTC Address"
+                android:textColor="#147979"
+                android:textSize="14sp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="40dp"
                 android:orientation="horizontal">
 
@@ -270,94 +309,108 @@
             </LinearLayout>
 
 
-            <Button
-                android:id="@+id/btnUpdate"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="@dimen/dp20"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/button_gradient"
-                android:text="Update"
-                android:textColor="@color/white" />
-
         </LinearLayout>
     </ScrollView>
 
-<RelativeLayout
-    android:id="@+id/otpLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clickable="true"
-    android:visibility="gone"
-    android:background="@color/blackTransparent">
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:orientation="horizontal"
+        android:background="#0CCB6E"
+        android:layout_alignParentBottom="true">
 
-        <androidx.cardview.widget.CardView
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/btn_gradient"
+            android:text="Update"
+            android:textColor="#378E8E" />
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/otpLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/blackTransparent"
+        android:clickable="true"
+        android:visibility="gone">
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/white"
-            android:layout_marginRight="@dimen/dp20"
-            android:layout_marginLeft="20dp"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="10dp">
-            <TextView
-                android:id="@+id/sentOtpText"
+            android:layout_centerInParent="true">
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="16sp"
-                android:fontFamily="@font/amazon_bold"
-                android:text="OTP sent successfully to your registered email."/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Please enter your OTP"
-                    android:layout_marginRight="10dp"/>
-
-                <EditText
-                    android:id="@+id/etOtp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Enter OTP"
-                    android:inputType="number"
-                    android:digits="0987654321"
-                    android:maxLength="6"/>
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="@dimen/dp20"
+                app:cardBackgroundColor="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <Button
-                        android:id="@+id/submitBtn"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Submit"
-                        android:textColor="@color/white"
-                        android:background="@drawable/button_gradient"/>
-                    <Button
-                        android:id="@+id/cancelBtn"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Cancel"
-                        android:textColor="@color/red"
-                        android:background="@drawable/button_gradient"/>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
+                    <TextView
+                        android:id="@+id/sentOtpText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/amazon_bold"
+                        android:gravity="center"
+                        android:text="OTP sent successfully to your registered email."
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:text="Please enter your OTP" />
+
+                    <EditText
+                        android:id="@+id/etOtp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="0987654321"
+                        android:hint="Enter OTP"
+                        android:inputType="number"
+                        android:maxLength="6" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/submitBtn"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/button_gradient"
+                            android:text="Submit"
+                            android:textColor="@color/white" />
+
+                        <Button
+                            android:id="@+id/cancelBtn"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/button_gradient"
+                            android:text="Cancel"
+                            android:textColor="@color/red" />
+
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
 
     </RelativeLayout>
-
-</RelativeLayout>
 </RelativeLayout>
