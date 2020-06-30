@@ -1,8 +1,10 @@
 package com.imuons.globalfunds.view;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
@@ -202,6 +204,7 @@ public class HomeActivity extends AppCompatActivity {
                         }
                         break;
 
+
                 }
                 mDrawerLayout.closeDrawers();
                 return false;
@@ -294,8 +297,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void showAlertDialog() {
-        AlertDialog.Builder builder1 = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
+       // AlertDialog.Builder builder1 = null;
+        /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
             builder1 = new AlertDialog.Builder(HomeActivity.this, AlertDialog.THEME_HOLO_LIGHT);
         }
         builder1.setTitle("Alert");
@@ -324,7 +327,41 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         AlertDialog alert11 = builder1.create();
-        alert11.show();
+        alert11.show();*/
+
+
+
+
+            AlertDialog.Builder adb = new AlertDialog.Builder(this);
+            adb.setTitle(getResources().getString(R.string.app_name));
+            adb.setIcon(R.mipmap.ic_launcher_round);
+            adb.setMessage("Are you sure you want to Logout ?");
+            adb.setPositiveButton(getResources().getString(R.string.yes),
+                    new DialogInterface.OnClickListener() {
+                        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            AppCommon.getInstance(HomeActivity.this).clearPreference();
+                            AppCommon.getInstance(getApplicationContext()).setUserLogin(AppCommon.getInstance(getApplicationContext()).getUserId(), false);
+                            startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                            finishAffinity();
+                            Toast.makeText(HomeActivity.this, getString(R.string.logout_success),
+                                    Toast.LENGTH_SHORT).show();
+                            //startActivity(new Intent());
+                            // finishAffinity();
+                        }
+
+                    });
+            adb.setNegativeButton(getString(R.string.Cancel), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            adb.show();
+
+
+
     }
 
     @Override

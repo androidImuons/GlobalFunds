@@ -14,6 +14,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="temsAgree">I agree with <b>Tearms &amp; Conditions</b></string>
     <string name="weHaveAcc">We have an account? Log In! Now</string>
+    <string name="yes">Ok</string>
+    <string name="logout_success">Logout Successfully</string>
+    <string name="Cancel">Cancel</string>
     <string-array name="show_array">
         <item>10</item>
         <item>50</item>
