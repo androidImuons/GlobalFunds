@@ -9,7 +9,7 @@ public class DirectBusinessReportResponse {
     @SerializedName("code")
     @Expose
     private Integer code;
-    @SerializedName("status")
+    @SerializedName("status")     
     @Expose
     private String status;
     @SerializedName("message")
