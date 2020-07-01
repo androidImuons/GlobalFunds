@@ -103,6 +103,7 @@
                 android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="16dp"
+                android:visibility="gone"
                 >
 
             </TextView>

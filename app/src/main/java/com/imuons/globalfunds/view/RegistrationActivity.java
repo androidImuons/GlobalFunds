@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,6 +42,8 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText et_confirmPassword;
     @BindView(R.id.checkbox)
     CheckBox checkbox;
+    @BindView(R.id.txtLogin)
+    TextView txtLogin;
 
 
     @Override
@@ -72,9 +75,9 @@ public class RegistrationActivity extends AppCompatActivity {
             et_confirmPassword.setError("Please enter confirm password");
         } else if (!cmf_password.matches(password)) {
             et_confirmPassword.setError("password not match");
-        } else if(!checkbox.isChecked()){
+        } else if (!checkbox.isChecked()) {
             Toast.makeText(this, "Please click on check term & condition", Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
             if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
                 AppCommon.getInstance(this).setNonTouchableFlags(this);
                 AppService apiService = ServiceGenerator.createService(AppService.class);
@@ -89,8 +92,11 @@ public class RegistrationActivity extends AppCompatActivity {
                         if (authResponse != null) {
                             Log.i("LoginResponse::", new Gson().toJson(authResponse));
                             if (authResponse.getCode() == 200) {
-                                startActivity(new Intent(RegistrationActivity.this , CongratulationPage.class).putExtra("userId" , authResponse.getData().getUserid()));
-                               // AppCommon.getInstance(RegistrationActivity.this).showDialog(RegistrationActivity.this, "Hello " + name + "\nYour user UserId is: " + authResponse.getData().getUserid() + "\n and Password is: " + password + "\nPlease login with userId and password");
+                                AppCommon.getInstance(RegistrationActivity.this).setPassword(et_password.getText().toString().trim());
+                                AppCommon.getInstance(RegistrationActivity.this).setName(et_fullName.getText().toString().trim());
+
+                                startActivity(new Intent(RegistrationActivity.this, CongratulationPage.class).putExtra("userId", authResponse.getData().getUserid()));
+                                // AppCommon.getInstance(RegistrationActivity.this).showDialog(RegistrationActivity.this, "Hello " + name + "\nYour user UserId is: " + authResponse.getData().getUserid() + "\n and Password is: " + password + "\nPlease login with userId and password");
                                 Toast.makeText(RegistrationActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(RegistrationActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -116,5 +122,11 @@ public class RegistrationActivity extends AppCompatActivity {
                 Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    public void gotoLogin(View view) {
+
+        startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
+
     }
 }

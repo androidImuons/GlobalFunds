@@ -66,7 +66,7 @@ public class HomeActivity extends AppCompatActivity {
         // setSupportActionBar(toolbar);
         ButterKnife.bind(this);
         TextView user_id = toolbar.findViewById(R.id.tv_user);
-        user_id.setText(AppCommon.getInstance(this).getUserId());
+        user_id.setText(AppCommon.getInstance(this).getName());
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle(R.string.title_activity_dashboard);
