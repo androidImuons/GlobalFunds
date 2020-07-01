@@ -90,7 +90,8 @@ public class OnGoingWithdrawReportAdapter extends RecyclerView.Adapter<OnGoingWi
 
     @Override
     public int getItemCount() {
-        return records.size();
+       // return records.size();
+        return (records == null) ? 0 : records.size();
     }
 
     public void update(List<PenddingWorkingRecord> records) {
