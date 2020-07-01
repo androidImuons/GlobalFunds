@@ -2,9 +2,6 @@ package com.imuons.globalfunds.fragment;
 
 import android.app.Dialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +14,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
 import com.google.gson.Gson;
 import com.imuons.globalfunds.R;
-import com.imuons.globalfunds.dataModel.LoginDataModel;
 import com.imuons.globalfunds.entity.CheckUserEntity;
 import com.imuons.globalfunds.entity.UpdateProfileEnitity;
 import com.imuons.globalfunds.responseModel.CommonResponse;
@@ -164,6 +162,8 @@ public class EditProfileFragment extends Fragment {
 
     private void setData(ProfileData data) {
         //  LoginDataModel loginDataModel = new Gson().fromJson(AppCommon.getInstance(EditEditProfileFragment.this.getContext()).getUserObject() , LoginDataModel.class);
+        AppCommon.getInstance(getActivity()).setName(data.getFullname());
+
         et_fullName.setText(data.getFullname());
         et_emailId.setText(data.getEmail());
         et_phoneNum.setText(data.getMobile());
