@@ -13,6 +13,7 @@ public class ServiceGenerator {
    // public static String API_BASE_URL = "https://www.globalfundsgroup.co/global-funds/api/";
     public static String API_BASE_URL = "https://www.globalfundsgroup.co/replica/global-funds/api/";
 
+
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
             .connectTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS).
