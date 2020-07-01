@@ -200,7 +200,7 @@ public class MakeNewPaymentFragment extends Fragment {
                 public void onFailure(Call call, Throwable t) {
                     dialog.dismiss();
                     AppCommon.getInstance(getActivity()).clearNonTouchableFlags(getActivity());
-                    Toast.makeText(getActivity(), "Server Error", Toast.LENGTH_SHORT).show();
+                 //   Toast.makeText(getActivity(), "Server Error", Toast.LENGTH_SHORT).show();
                 }
             });
 
