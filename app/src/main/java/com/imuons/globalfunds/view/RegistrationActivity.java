@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,11 +17,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.gson.Gson;
 import com.imuons.globalfunds.R;
 import com.imuons.globalfunds.entity.RegisterEntity;
+import com.imuons.globalfunds.fragment.EditProfileFragment;
 import com.imuons.globalfunds.responseModel.RegisterResponse;
 import com.imuons.globalfunds.retrofit.AppService;
 import com.imuons.globalfunds.retrofit.ServiceGenerator;
 import com.imuons.globalfunds.utils.AppCommon;
 import com.imuons.globalfunds.utils.ViewUtils;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,7 +54,11 @@ public class RegistrationActivity extends AppCompatActivity {
     CheckBox checkbox;
     @BindView(R.id.txtLogin)
     TextView txtLogin;
+    @BindView(R.id.country_category)
+    Spinner country_category;
+    List<String> countries;
 
+    HashMap<String, String> countryMap = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +66,27 @@ public class RegistrationActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_registration);
         ButterKnife.bind(this);
+
+
+        String[] locales = Locale.getISOCountries();
+        countries = new ArrayList<>();
+        countries.add("**Select Country**");
+
+        for (String countryCode : locales) {
+
+            Locale obj = new Locale("", countryCode);
+
+            countries.add(obj.getDisplayCountry());
+            countryMap.put(obj.getCountry(), obj.getDisplayCountry());
+
+        }
+        Collections.sort(countries);
+        /*country_category.se
+         country_category.setItems(countries);*/
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, countries);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        country_category.setAdapter(adapter);
     }
 
     public void createAccount(View view) {
@@ -61,6 +96,16 @@ public class RegistrationActivity extends AppCompatActivity {
         String email = et_emailId.getText().toString().trim();
         String password = et_password.getText().toString().trim();
         String cmf_password = et_confirmPassword.getText().toString().trim();
+        String country = "";
+        if (country_category.getSelectedItemPosition() != 0) {
+            for (Map.Entry<String, String> entry : countryMap.entrySet()) {
+
+                if (entry.getValue().equals(countries.get(country_category.getSelectedItemPosition()))) {
+                    System.out.println(entry.getKey());
+                    country = entry.getKey();
+                }
+            }
+        }
         if (name.isEmpty()) {
             et_fullName.setError("Please enter your full name");
         } else if (email.isEmpty()) {
@@ -69,6 +114,8 @@ public class RegistrationActivity extends AppCompatActivity {
             et_referralId.setError("Please enter your referral code");
         } else if (mobile.isEmpty()) {
             et_phoneNum.setError("please enter your mobile number");
+        }  else if (country_category.getSelectedItemPosition() == 0) {
+            Toast.makeText(this, "Please select the country", Toast.LENGTH_SHORT).show();
         } else if (password.isEmpty()) {
             et_password.setError("Please enter your password");
         } else if (cmf_password.isEmpty()) {
@@ -82,7 +129,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 AppCommon.getInstance(this).setNonTouchableFlags(this);
                 AppService apiService = ServiceGenerator.createService(AppService.class);
                 final Dialog dialog = ViewUtils.getProgressBar(RegistrationActivity.this);
-                Call call = apiService.RegisterApi(new RegisterEntity(name, email, mobile, password, cmf_password, referralCode));
+                Call call = apiService.RegisterApi(new RegisterEntity(name, email, mobile, password, cmf_password, referralCode , country));
                 call.enqueue(new Callback() {
                     @Override
                     public void onResponse(Call call, Response response) {
