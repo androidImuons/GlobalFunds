@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
@@ -82,6 +84,7 @@ public class HomeActivity extends AppCompatActivity {
             getSupportActionBar().setTitle(R.string.title_activity_dashboard);
         }
         mDrawerLayout = findViewById(R.id.drawer_layout);
+
         mExpandableListView = findViewById(R.id.navList);
         mExpandableListView.setIndicatorBounds(mExpandableListView.getRight() + 120, mExpandableListView.getWidth());
         setupToolbar();
@@ -310,17 +313,28 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+
     private void setupToolbar() {
         toolbar = findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
     }
 
     void setupDrawerToggle() {
+        toolbar.post(new Runnable() {
+            @Override
+            public void run() {
+                Drawable d = ResourcesCompat.getDrawable(getResources(), R.drawable.menu_icon, null);
+                toolbar.setNavigationIcon(d);
+            }
+        });
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name, R.string.app_name);
         //This is necessary to change the icon of the Drawer Toggle upon state change.
         mDrawerToggle.syncState();
         user_id.setText(AppCommon.getInstance(this).getName());
+
 
     }
 
