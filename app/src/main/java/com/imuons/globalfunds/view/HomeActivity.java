@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
@@ -18,6 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
+import com.google.gson.Gson;
 import com.imuons.globalfunds.R;
 import com.imuons.globalfunds.adapter.CustomExpandableListAdapter;
 import com.imuons.globalfunds.dataModel.ExpandableListModel;
@@ -38,12 +40,19 @@ import com.imuons.globalfunds.fragment.OnGoingPayments;
 import com.imuons.globalfunds.fragment.OngoingWithdrawalFragment;
 import com.imuons.globalfunds.fragment.ProfileFragment;
 import com.imuons.globalfunds.fragment.ROIIncomeReportFragment;
+import com.imuons.globalfunds.responseModel.ProfileData;
+import com.imuons.globalfunds.responseModel.ProfileResponse;
+import com.imuons.globalfunds.retrofit.AppService;
+import com.imuons.globalfunds.retrofit.ServiceGenerator;
 import com.imuons.globalfunds.utils.AppCommon;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity {
     ActionBarDrawerToggle mDrawerToggle;
@@ -57,6 +66,7 @@ public class HomeActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private MakeNewPaymentFragment makePayment;
     private int child_itme;
+    private TextView user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +75,8 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         // setSupportActionBar(toolbar);
         ButterKnife.bind(this);
-        TextView user_id = toolbar.findViewById(R.id.tv_user);
-        user_id.setText(AppCommon.getInstance(this).getName());
+        user_id = toolbar.findViewById(R.id.tv_user);
+        callProfileInfoApi();
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle(R.string.title_activity_dashboard);
@@ -79,7 +89,7 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         prepareListData();
 
-       firstFragment();
+        firstFragment();
         setupDrawerToggle();
 
         Listitemclick();
@@ -87,7 +97,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void firstFragment() {
-        is_home=true;
+        is_home = true;
         fragmentManager = getSupportFragmentManager();
         mDrawerLayout.addDrawerListener(mDrawerToggle);
         fragmentManager.beginTransaction().replace(R.id.content_frame, HomeFragment.newInstance("", "")).commit();
@@ -106,7 +116,7 @@ public class HomeActivity extends AppCompatActivity {
         mExpandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-
+                user_id.setText(AppCommon.getInstance(getApplicationContext()).getName());
 
                 switch (groupPosition) {
                     case 0:
@@ -216,8 +226,7 @@ public class HomeActivity extends AppCompatActivity {
                         switch (childPosition) {
                             case 0:
                                 is_home = false;
-                                fragmentManager.beginTransaction().replace(R.id.content_frame,
-                                        ROIIncomeReportFragment.newInstance()).commit();
+                                fragmentManager.beginTransaction().replace(R.id.content_frame, ROIIncomeReportFragment.newInstance()).commit();
                                 getSupportActionBar().setTitle("ROI Income Report");
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
@@ -225,32 +234,28 @@ public class HomeActivity extends AppCompatActivity {
 
                             case 1:
                                 is_home = false;
-                                fragmentManager.beginTransaction().replace(R.id.content_frame,
-                                        LevelIncomeReportFragment.newInstance()).commit();
+                                fragmentManager.beginTransaction().replace(R.id.content_frame, LevelIncomeReportFragment.newInstance()).commit();
                                 getSupportActionBar().setTitle("Level Income Report");
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
                                 break;
                             case 2:
                                 is_home = false;
-                                fragmentManager.beginTransaction().replace(R.id.content_frame,
-                                        LevelROIIncomeFragment.newInstance()).commit();
+                                fragmentManager.beginTransaction().replace(R.id.content_frame, LevelROIIncomeFragment.newInstance()).commit();
                                 getSupportActionBar().setTitle("Level ROI Income Report");
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
                                 break;
                             case 3:
                                 is_home = false;
-                                fragmentManager.beginTransaction().replace(R.id.content_frame,
-                                        AwardIncomeFragment.newInstance()).commit();
+                                fragmentManager.beginTransaction().replace(R.id.content_frame, AwardIncomeFragment.newInstance()).commit();
                                 getSupportActionBar().setTitle("Award Income Report");
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
                                 break;
                             case 4:
                                 is_home = false;
-                                fragmentManager.beginTransaction().replace(R.id.content_frame,
-                                        DirectIncomeReport.newInstance()).commit();
+                                fragmentManager.beginTransaction().replace(R.id.content_frame, DirectIncomeReport.newInstance()).commit();
                                 getSupportActionBar().setTitle("Direct Business Report");
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
@@ -261,8 +266,7 @@ public class HomeActivity extends AppCompatActivity {
                         switch (childPosition) {
                             case 0:
                                 is_home = false;
-                                fragmentManager.beginTransaction().replace(R.id.content_frame,
-                                        MakeWorkingWithdrawalFragment.newInstance()).commit();
+                                fragmentManager.beginTransaction().replace(R.id.content_frame, MakeWorkingWithdrawalFragment.newInstance()).commit();
                                 getSupportActionBar().setTitle("Make Working Withdrawal");
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
@@ -270,16 +274,14 @@ public class HomeActivity extends AppCompatActivity {
 
                             case 1:
                                 is_home = false;
-                                fragmentManager.beginTransaction().replace(R.id.content_frame,
-                                        ConfirmedWithdrawalFragment.newInstance()).commit();
+                                fragmentManager.beginTransaction().replace(R.id.content_frame, ConfirmedWithdrawalFragment.newInstance()).commit();
                                 getSupportActionBar().setTitle("Confirm Withdrawal");
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
                                 break;
                             case 2:
                                 is_home = false;
-                                fragmentManager.beginTransaction().replace(R.id.content_frame,
-                                        OngoingWithdrawalFragment.newInstance()).commit();
+                                fragmentManager.beginTransaction().replace(R.id.content_frame, OngoingWithdrawalFragment.newInstance()).commit();
                                 getSupportActionBar().setTitle("Ongoing Withdrawal");
                                 mExpandableListView.setItemChecked(childPosition, true);
                                 mExpandableListView.setSelection(childPosition);
@@ -318,6 +320,8 @@ public class HomeActivity extends AppCompatActivity {
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name, R.string.app_name);
         //This is necessary to change the icon of the Drawer Toggle upon state change.
         mDrawerToggle.syncState();
+        user_id.setText(AppCommon.getInstance(this).getName());
+
     }
 
     private void prepareListData() {
@@ -382,7 +386,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void showAlertDialog() {
-       // AlertDialog.Builder builder1 = null;
+        // AlertDialog.Builder builder1 = null;
         /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
             builder1 = new AlertDialog.Builder(HomeActivity.this, AlertDialog.THEME_HOLO_LIGHT);
         }
@@ -415,46 +419,41 @@ public class HomeActivity extends AppCompatActivity {
         alert11.show();*/
 
 
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+        adb.setTitle(getResources().getString(R.string.app_name));
+        adb.setIcon(R.mipmap.ic_launcher_round);
+        adb.setMessage("Are you sure you want to Logout ?");
+        adb.setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                AppCommon.getInstance(HomeActivity.this).clearPreference();
+                AppCommon.getInstance(getApplicationContext()).setUserLogin(AppCommon.getInstance(getApplicationContext()).getUserId(), false);
+                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                finishAffinity();
+                Toast.makeText(HomeActivity.this, getString(R.string.logout_success), Toast.LENGTH_SHORT).show();
+                //startActivity(new Intent());
+                // finishAffinity();
+            }
 
-
-            AlertDialog.Builder adb = new AlertDialog.Builder(this);
-            adb.setTitle(getResources().getString(R.string.app_name));
-            adb.setIcon(R.mipmap.ic_launcher_round);
-            adb.setMessage("Are you sure you want to Logout ?");
-            adb.setPositiveButton(getResources().getString(R.string.yes),
-                    new DialogInterface.OnClickListener() {
-                        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            AppCommon.getInstance(HomeActivity.this).clearPreference();
-                            AppCommon.getInstance(getApplicationContext()).setUserLogin(AppCommon.getInstance(getApplicationContext()).getUserId(), false);
-                            startActivity(new Intent(HomeActivity.this, LoginActivity.class));
-                            finishAffinity();
-                            Toast.makeText(HomeActivity.this, getString(R.string.logout_success),
-                                    Toast.LENGTH_SHORT).show();
-                            //startActivity(new Intent());
-                            // finishAffinity();
-                        }
-
-                    });
-            adb.setNegativeButton(getString(R.string.Cancel), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
-            adb.show();
-
+        });
+        adb.setNegativeButton(getString(R.string.Cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        adb.show();
 
 
     }
 
     @Override
     public void onBackPressed() {
-        if(is_home){
+        if (is_home) {
             finish();
-        }else{
-           firstFragment();
+        } else {
+            firstFragment();
         }
         if (makePayment != null) {
             if (makePayment.is_payment_dialog_open) {
@@ -464,5 +463,49 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
 
+    }
+
+    private void callProfileInfoApi() {
+        if (AppCommon.getInstance(getApplicationContext()).isConnectingToInternet(getApplicationContext())) {
+            //AppCommon.getInstance(getApplicationContext()).setNonTouchableFlags(HomeActivity
+            // .this);
+            AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(getApplicationContext()).getToken());
+           // final Dialog dialog = ViewUtils.getProgressBar(HomeActivity.this);
+            Call call = apiService.profileApi();
+            call.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+//                    AppCommon.getInstance(HomeActivity.this).clearNonTouchableFlags(HomeActivity.this);
+//                    dialog.dismiss();
+                    ProfileResponse authResponse = (ProfileResponse) response.body();
+                    if (authResponse != null) {
+                        Log.i("LoginResponse::", new Gson().toJson(authResponse));
+                        if (authResponse.getCode() == 200) {
+                            setData(authResponse.getData());
+                        } else {
+                            Toast.makeText(getApplicationContext(), authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "The user credentials were incorrect", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+//                    dialog.dismiss();
+//                    AppCommon.getInstance(getApplicationContext()).clearNonTouchableFlags(HomeActivity.this);
+                    Toast.makeText(getApplicationContext(), "Server Error", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+        } else {
+            // no internet
+            Toast.makeText(getApplicationContext(), "Please check your internet", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void setData(ProfileData data) {
+        AppCommon.getInstance(getApplicationContext()).setName(data.getFullname());
     }
 }
