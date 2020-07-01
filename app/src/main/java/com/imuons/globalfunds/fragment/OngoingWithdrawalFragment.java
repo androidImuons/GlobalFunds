@@ -146,7 +146,7 @@ public class OngoingWithdrawalFragment extends Fragment {
                         if (authResponse.getCode() == 200) {
                             setData(authResponse.getData());
                         } else {
-                            setData(authResponse.getData());
+
                             Toast.makeText(getContext(), authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     } else {
