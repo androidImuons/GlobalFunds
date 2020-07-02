@@ -2,11 +2,6 @@ package com.imuons.globalfunds.fragment;
 
 import android.app.Dialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -20,14 +15,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.gson.Gson;
 import com.imuons.globalfunds.R;
-import com.imuons.globalfunds.adapter.DirectUserLevelAdapter;
 import com.imuons.globalfunds.adapter.LeveRecordsAdapter;
 import com.imuons.globalfunds.dataModel.LevelData;
 import com.imuons.globalfunds.dataModel.LevelRecord;
 import com.imuons.globalfunds.dataModel.LevelViewData;
-import com.imuons.globalfunds.responseModel.DirectUserResponseModel;
 import com.imuons.globalfunds.responseModel.GetLevelResponse;
 import com.imuons.globalfunds.responseModel.LevelViewResponseModel;
 import com.imuons.globalfunds.retrofit.AppService;
@@ -86,7 +83,7 @@ public class LevelViewFragment extends Fragment {
         recycle_view.setHasFixedSize(true);
         recycle_view.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
         records = new ArrayList<>();
-        leveRecordsAdapter = new LeveRecordsAdapter( LevelViewFragment.this, records);
+        leveRecordsAdapter = new LeveRecordsAdapter( getActivity(),LevelViewFragment.this, records);
         recycle_view.setAdapter(leveRecordsAdapter);
 
 

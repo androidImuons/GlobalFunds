@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp20"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="@dimen/dp20"
+        android:layout_marginBottom="@dimen/dp20"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:id="@+id/ll_top_layer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_top_round_green_even"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp10"
+            >
+
+            <TextView
+                android:id="@+id/txt_plan_name"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@drawable/button_gradient"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/montserrat_regular"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textAllCaps="true"
+                android:textColor="@color/txt_color_green"
+                android:textStyle="bold"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Investment Amount"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/txt_min_mak_limit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:paddingBottom="@dimen/dp5"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                ></TextView>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="@drawable/bg_bottom_round_white"
+            android:gravity="center_horizontal"
+            >
+
+            <ImageView
+                android:id="@+id/iv_doen_arrow"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="-20dp"
+                android:background="@drawable/triangle"
+                ></ImageView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp30"
+                    android:layout_marginRight="@dimen/dp30"
+                    android:layout_marginBottom="@dimen/dp30"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/ll_center_first_layer"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_green_gardient_even"
+                        android:gravity="center_vertical"
+                        >
+
+                        <ImageView
+                            android:layout_width="@dimen/dp10"
+                            android:layout_height="@dimen/dp10"
+                            android:layout_marginLeft="@dimen/dp20"
+                            android:background="@drawable/white_circle"
+                            ></ImageView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp20"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="Monthly Returns -"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/sp18"
+                            ></TextView>
+
+                        <TextView
+                            android:id="@+id/txt_txt_return"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp20"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/sp18"
+                            android:textStyle="bold"
+                            ></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_center_second_layer"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_green_plan_gradin_even"
+                        android:gravity="center_vertical"
+                        >
+
+                        <ImageView
+                            android:layout_width="@dimen/dp10"
+                            android:layout_height="@dimen/dp10"
+                            android:layout_marginLeft="@dimen/dp20"
+                            android:background="@drawable/white_circle"
+                            ></ImageView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp20"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="Locking -"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/sp18"
+                            ></TextView>
+
+                        <TextView
+                            android:id="@+id/txt_txt_locking_day"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp20"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/sp18"
+                            android:textStyle="bold"
+                            ></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_center_third_layer"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_green_plan__dark_gradin_even"
+                        android:gravity="center_vertical"
+                        >
+
+                        <ImageView
+                            android:layout_width="@dimen/dp10"
+                            android:layout_height="@dimen/dp10"
+                            android:layout_marginLeft="@dimen/dp20"
+                            android:background="@drawable/white_circle"
+                            ></ImageView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp20"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="Withdrawal -"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/sp18"
+                            ></TextView>
+
+                        <TextView
+                            android:id="@+id/txt_txt_withdrawal_day"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp20"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/sp18"
+                            android:textStyle="bold"
+                            ></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_center_four_layer"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_green_plan_gradin_even"
+                        android:gravity="center_vertical"
+                        >
+
+                        <ImageView
+                            android:layout_width="@dimen/dp10"
+                            android:layout_height="@dimen/dp10"
+                            android:layout_marginLeft="@dimen/dp20"
+                            android:background="@drawable/white_circle"
+                            ></ImageView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp20"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="Principle With-\ndranwal(Anytime)"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/sp18"
+                            ></TextView>
+
+                        <TextView
+                            android:id="@+id/txt_principle_withdrawal_day"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp5"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/sp18"
+                            android:textStyle="bold"
+                            ></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_center_five_layer"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_green_plan__dark_gradin_even"
+                        android:gravity="center"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:background="@drawable/button_gradient"
+                            android:backgroundTint="@color/white"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:gravity="center"
+                            android:hint="Enter Amount(In USD)"
+                            android:inputType="number"
+                            android:lines="1"
+                            android:padding="7dp"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16dp"
+                            >
+
+                        </EditText>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_center_six_layer"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_bottom_round_green_gardine_even"
+                        android:gravity="center"
+                        >
+
+                        <TextView
+                            android:id="@+id/btn_make_payment"
+                            android:layout_width="200dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/button_gradient"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="Invest Now"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

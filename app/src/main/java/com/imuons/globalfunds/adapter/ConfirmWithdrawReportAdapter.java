@@ -1,5 +1,6 @@
 package com.imuons.globalfunds.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,14 @@ public class ConfirmWithdrawReportAdapter extends RecyclerView.Adapter<ConfirmWi
         holder.n_w_type.setText(confirWithdralList.getNetworkType());
         holder.txt_withdrwa_type.setText(String.valueOf(confirWithdralList.getWithdrawType()));
         holder.txtremark.setText(confirWithdralList.getRemark());
+        if(confirWithdralList.getStatus().equals("Paid")){
+            holder.txtremark.setText("Paid");
+            holder.txtremark.setTextColor(Color.parseColor("#1D7F6E"));
+        }else{
+            holder.txtremark.setText("Unpaid");
+            holder.txtremark.setTextColor(Color.parseColor("#F30505"));
+        }
+
         holder.txt_date.setText(confirWithdralList.getEntryTime().split(" ")[0].replace("-", "/"));
         if (selected_postion == position) {
             holder.expand_icon.setSelected(true);

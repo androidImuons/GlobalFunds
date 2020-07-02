@@ -2,11 +2,6 @@ package com.imuons.globalfunds.fragment;
 
 import android.app.Dialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -20,15 +15,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.gson.Gson;
 import com.imuons.globalfunds.R;
 import com.imuons.globalfunds.adapter.DirectUserLevelAdapter;
-import com.imuons.globalfunds.adapter.OnGoingPaymentAdapter;
 import com.imuons.globalfunds.responseModel.DirectRecord;
 import com.imuons.globalfunds.responseModel.DirectUserResponseData;
 import com.imuons.globalfunds.responseModel.DirectUserResponseModel;
-import com.imuons.globalfunds.responseModel.OngoingDataModel;
-import com.imuons.globalfunds.responseModel.OngoingPaymentResponseModel;
 import com.imuons.globalfunds.retrofit.AppService;
 import com.imuons.globalfunds.retrofit.ServiceGenerator;
 import com.imuons.globalfunds.utils.AppCommon;
@@ -80,7 +76,9 @@ public class DirectUserListFragment extends Fragment {
         recycle_view.setHasFixedSize(true);
         recycle_view.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
         directRecordList = new ArrayList<>();
-        directUserLevelAdapter = new DirectUserLevelAdapter( DirectUserListFragment.this, directRecordList);
+        directUserLevelAdapter = new DirectUserLevelAdapter( getActivity(),
+                DirectUserListFragment.this,
+                directRecordList);
         recycle_view.setAdapter(directUserLevelAdapter);
 
         searchSpinnner();

@@ -18,8 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.gson.Gson;
 import com.google.zxing.BarcodeFormat;
@@ -28,6 +28,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.imuons.globalfunds.R;
 import com.imuons.globalfunds.adapter.PackageItemAdapter;
+import com.imuons.globalfunds.adapter.PackagePagerAdapter;
 import com.imuons.globalfunds.responseModel.GetAddressDataModel;
 import com.imuons.globalfunds.responseModel.GetAddressResponse;
 import com.imuons.globalfunds.responseModel.PckageDataModel;
@@ -46,6 +47,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import me.relex.circleindicator.CircleIndicator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -80,11 +82,17 @@ public class MakeNewPaymentFragment extends Fragment {
     Button copyto;
     @BindView(R.id.link_address)
     TextView link_address;
+    @BindView(R.id.view_pager)
+    ViewPager view_pager;
+    @BindView(R.id.circle)
+    CircleIndicator circle;
+
     List<PckageDataModel> dataModelList = new ArrayList<>();
     private View view;
     private PackageItemAdapter packageItemAdapter;
     private int finalvalue;
     private String straddress;
+    private PackagePagerAdapter packagePagerAdapter;
 
     public MakeNewPaymentFragment() {
         // Required empty public constructor
@@ -107,11 +115,12 @@ public class MakeNewPaymentFragment extends Fragment {
     private void initUI() {
 
 
-        recycle_view.setHasFixedSize(true);
-        recycle_view.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
 
-        packageItemAdapter = new PackageItemAdapter(getActivity(), MakeNewPaymentFragment.this, dataModelList);
-        recycle_view.setAdapter(packageItemAdapter);
+//        recycle_view.setHasFixedSize(true);
+//        recycle_view.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
+//
+//        packageItemAdapter = new PackageItemAdapter(getActivity(), MakeNewPaymentFragment.this, dataModelList);
+//        recycle_view.setAdapter(packageItemAdapter);
     }
 
     @Override
@@ -162,7 +171,11 @@ public class MakeNewPaymentFragment extends Fragment {
 
     private void setData(List<PckageDataModel> data) {
         dataModelList = data;
-        packageItemAdapter.updateList(dataModelList);
+//        packageItemAdapter.updateList(dataModelList);
+        packagePagerAdapter=new PackagePagerAdapter(getContext(),dataModelList,
+                MakeNewPaymentFragment.this);
+        view_pager.setAdapter(packagePagerAdapter);
+        circle.setViewPager(view_pager);
     }
 
     public void getAddress(String amount, Integer id, String type) {

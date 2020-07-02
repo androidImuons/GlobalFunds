@@ -21,7 +21,7 @@ public class DirectRecord {
     private String entryTime;
     @SerializedName("total_investment")
     @Expose
-    private Integer totalInvestment;
+    private long totalInvestment;
     @SerializedName("status")
     @Expose
     private String status;
@@ -75,11 +75,11 @@ public class DirectRecord {
         this.entryTime = entryTime;
     }
 
-    public Integer getTotalInvestment() {
+    public long getTotalInvestment() {
         return totalInvestment;
     }
 
-    public void setTotalInvestment(Integer totalInvestment) {
+    public void setTotalInvestment(long totalInvestment) {
         this.totalInvestment = totalInvestment;
     }
 

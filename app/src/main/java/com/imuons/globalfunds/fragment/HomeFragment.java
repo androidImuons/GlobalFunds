@@ -208,7 +208,7 @@ public class HomeFragment extends Fragment {
         txt_total_balanace.setText(MyPreference.currency_symbol + String.format("%.2f", data.getWorkingWalletBalance()));
         txt_roi_icome.setText(MyPreference.currency_symbol + data.getRoiIncome());
         txt_direct_ref_income.setText(MyPreference.currency_symbol + String.format("%.2f", data.getTotal_business()));
-        txt_team_roi_income.setText(MyPreference.currency_symbol + data.getRoiIncome());
+        txt_team_roi_income.setText(MyPreference.currency_symbol + data.getLevelIncomeRoi());
         txt_level_income.setText(MyPreference.currency_symbol + String.format("%.2f", data.getLevelIncome()));
     }
 

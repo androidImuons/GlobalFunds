@@ -80,6 +80,7 @@ public class OnGoingPaymentAdapter extends RecyclerView.Adapter<OnGoingPaymentAd
         holder.srno.setText(String.valueOf(position + 1));
         holder.txt_address.setText(record.getAddress());
         holder.txt_date.setText(record.getEntryTime());
+        holder.txt_date.setText(record.getEntryTime().split(" ")[0].replace("-", "/"));
         holder.deposit_id.setText(record.getInvoiceId());
         holder.txt_package.setText(record.getPlanName());
         holder.amount.setText(MyPreference.currency_symbol +String.valueOf(record.getPriceInUsd()));

@@ -19,7 +19,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class PackageItemAdapter extends RecyclerView.Adapter<PackageItemAdapter.ViewHoleder> {
     FragmentActivity activity;
@@ -43,21 +42,21 @@ public class PackageItemAdapter extends RecyclerView.Adapter<PackageItemAdapter.
         PckageDataModel dataModel = dataModelList.get(position);
         holder.txt_plan_name.setText(dataModel.getName());
         holder.txt_return.setText(dataModel.getRoi() + "% Monthly Returns");
-        holder.rb_btc.setText(dataModel.getType());
+        holder.rb_btc.setText(dataModel.getCurrencyCode());
 
         holder.btn_make_payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(holder.et_amount.getText().toString().trim().isEmpty()){
+                if (holder.et_amount.getText().toString().trim().isEmpty()) {
                     holder.et_amount.setError("Enter Amount");
                     holder.et_amount.requestFocus();
-                }else{
-                    int amount =Integer.parseInt(holder.et_amount.getText().toString());
-                    if(amount>=dataModel.getMinHash()&&amount<=dataModel.getMaxHash()){
-                        makeNewPaymentFragment.getAddress(holder.et_amount.getText().toString(),dataModel.getId(),dataModel.getType());
-                    }else{
-                        holder.et_amount.setError("Enter Min "+dataModel.getMinHash()+ " Max "+dataModel.getMaxHash()+ " Amount");
+                } else {
+                    int amount = Integer.parseInt(holder.et_amount.getText().toString());
+                    if (amount >= dataModel.getMinHash() && amount <= dataModel.getMaxHash()) {
+                        makeNewPaymentFragment.getAddress(holder.et_amount.getText().toString(), dataModel.getId(), dataModel.getCurrencyCode());
+                    } else {
+                        holder.et_amount.setError("Enter Min " + dataModel.getMinHash() + " Max " + dataModel.getMaxHash() + " Amount");
                         holder.et_amount.requestFocus();
                     }
                 }

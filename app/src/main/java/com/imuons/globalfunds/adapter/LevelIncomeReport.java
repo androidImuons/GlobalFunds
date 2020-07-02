@@ -1,5 +1,6 @@
 package com.imuons.globalfunds.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,10 +77,18 @@ public class LevelIncomeReport extends RecyclerView.Adapter<LevelIncomeReport.Vi
         holder.txt_user_id.setText(levelIncomeRecordModel.getFromUserId());
         holder.txt_name.setText(levelIncomeRecordModel.getFromFullname());
         holder.txt_date.setText(levelIncomeRecordModel.getEntryTime());
+        holder.txt_date.setText(levelIncomeRecordModel.getEntryTime().split(" ")[0].replace("-", "/"));
         holder.txt_amount.setText(MyPreference.currency_symbol + levelIncomeRecordModel.getAmount());
         holder.txt_laps_amount.setText(String.valueOf(levelIncomeRecordModel.getLapsAmount()));
         holder.txt_topup_id.setText(levelIncomeRecordModel.getPin());
-        holder.txt_status.setText(levelIncomeRecordModel.getStatus());
+        if(levelIncomeRecordModel.getStatus().equals("Paid")){
+            holder.txt_status.setText("Paid");
+            holder.txt_status.setTextColor(Color.parseColor("#1D7F6E"));
+        }else{
+            holder.txt_status.setText("Unpaid");
+            holder.txt_status.setTextColor(Color.parseColor("#F30505"));
+        }
+
 
     }
 

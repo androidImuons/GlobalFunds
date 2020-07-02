@@ -77,6 +77,7 @@ public class AwardReportAdapter extends RecyclerView.Adapter<AwardReportAdapter.
         holder.award.setText(String.valueOf(awardIncomeRecord.getAward()));
         holder.txt_businesss_req.setText(String.valueOf(awardIncomeRecord.getBusinessRequired()));
         holder.txt_date.setText(awardIncomeRecord.getEntryTime());
+        holder.txt_date.setText(awardIncomeRecord.getEntryTime().split(" ")[0].replace("-", "/"));
     }
 
     @Override

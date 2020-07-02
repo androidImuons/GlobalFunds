@@ -395,7 +395,7 @@
                             android:layout_marginTop="20dp"
                             android:fontFamily="@font/montserrat_bold"
                             android:gravity="center"
-                            android:text="Team ROI Income"
+                            android:text="Leve ROI Income"
                             android:textColor="@color/white"
                             android:textSize="14dp"
                             ></TextView>
@@ -538,7 +538,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/montserrat_bold"
                                 android:gravity="center"
-                                android:text="Direct Referral \nIncome"
+                                android:text="Direct\nIncome"
                                 android:textColor="@color/white"
                                 android:textSize="10dp"
                                 ></TextView>
@@ -609,7 +609,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/montserrat_bold"
                                 android:gravity="center"
-                                android:text="Level Referral\n Income"
+                                android:text="Level \n Income"
                                 android:textColor="@color/white"
                                 android:textSize="10dp"
                                 ></TextView>

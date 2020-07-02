@@ -81,6 +81,7 @@ public class ConnfirmPaymentAdapter extends RecyclerView.Adapter<ConnfirmPayment
     private void setData(ViewHoleder holder, ConfirmPaymentRecordModel record, int position) {
         holder.srno.setText(String.valueOf(position + 1));
         holder.txt_date.setText(record.getEntryTime());
+        holder.txt_date.setText(record.getEntryTime().split(" ")[0].replace("-", "/"));
         holder.deposit_id.setText(record.getInvoiceId());
         holder.txt_package.setText(record.getPlanName());
         holder.amount.setText(MyPreference.currency_symbol +String.valueOf(record.getTopAmount()));

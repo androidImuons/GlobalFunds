@@ -1,5 +1,6 @@
 package com.imuons.globalfunds.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,6 +81,14 @@ setData(holder,records.get(position),position);
         holder.txt_status.setText(roiIncomeRecord.getStatus());
         holder.txt_roi_amount.setText(MyPreference.currency_symbol+roiIncomeRecord.getAmount());
         holder.txt_date.setText(roiIncomeRecord.getEntryTime().split(" ")[0].replace("-", "/"));
+        if(roiIncomeRecord.getStatus().equals("Paid")){
+            holder.txt_status.setText("Paid");
+            holder.txt_status.setTextColor(Color.parseColor("#1D7F6E"));
+        }else{
+            holder.txt_status.setText("Unpaid");
+            holder.txt_status.setTextColor(Color.parseColor("#F30505"));
+        }
+
     }
 
 

@@ -116,8 +116,9 @@ public class MakeWorkingWithdrawalFragment extends Fragment {
     private void setData(DashBoardDataModel data) {
         this.data = data;
         txt_working_income.setText(MyPreference.currency_symbol + data.getWorkingWallet());
-        txt_working_balance.setText(MyPreference.currency_symbol + data.getWorkingWalletWithdraw());
-        txt_working_withdrwa.setText(MyPreference.currency_symbol + data.getWorkingWalletBalance());
+        txt_working_balance.setText(MyPreference.currency_symbol + data.getWorkingWalletBalance());
+        txt_working_withdrwa.setText(MyPreference.currency_symbol + data.getWorkingWalletWithdraw());
+        txt_withdrwa_mode.setText("BITCOIN");
         txt_address.setText(data.getBtcAddress());
 
     }

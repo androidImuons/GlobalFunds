@@ -1,22 +1,23 @@
 package com.imuons.globalfunds.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.imuons.globalfunds.R;
 import com.imuons.globalfunds.dataModel.LevelRecord;
-import com.imuons.globalfunds.fragment.DirectUserListFragment;
 import com.imuons.globalfunds.fragment.LevelViewFragment;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -28,10 +29,12 @@ public class LeveRecordsAdapter extends RecyclerView.Adapter<LeveRecordsAdapter.
 
     Fragment fragment;
     List<LevelRecord> records;
-
-    public LeveRecordsAdapter(Fragment fragment, List<LevelRecord> records) {
+    private int selected_postion;
+FragmentActivity activity;
+    public LeveRecordsAdapter(FragmentActivity activity, Fragment fragment, List<LevelRecord> records) {
         this.fragment = fragment;
         this.records = records;
+        this.activity=activity;
     }
 
     @NonNull
@@ -44,6 +47,26 @@ public class LeveRecordsAdapter extends RecyclerView.Adapter<LeveRecordsAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull LevelRecordHolder holder, int position) {
+
+        holder.hiddenlayout.setVisibility(View.GONE);
+
+        if (selected_postion == position) {
+            holder.expand_icon.setSelected(true);
+            holder.expand_icon.setActivated(true);
+            holder.llmain.setActivated(true);
+            //creating an animation
+            Animation slideDown = AnimationUtils.loadAnimation(activity, R.anim.slide_down);
+            //toggling visibility
+            holder.hiddenlayout.setVisibility(View.VISIBLE);
+
+            //adding sliding effect
+            holder.hiddenlayout.startAnimation(slideDown);
+        } else {
+            holder.llmain.setSelected(false);
+            holder.expand_icon.setActivated(false);
+            holder.llmain.setActivated(false);
+        }
+
         LevelRecord levelRecord = records.get(position);
         holder.srno.setText(String.valueOf(position + 1));
         if (levelRecord.getCountry() != null)
@@ -56,16 +79,25 @@ public class LeveRecordsAdapter extends RecyclerView.Adapter<LeveRecordsAdapter.
         holder.level.setText(String.valueOf(levelRecord.getLevel()));
         holder.registrationDate.setText(levelRecord.getEntryTime().split(" ")[0].replace("-", "/"));
         holder.sponsorId.setText(levelRecord.getSponserId());
-        holder.status.setText(levelRecord.getStatus());
+
         holder.total.setText(String.valueOf(levelRecord.getTotalInvestment()));
 
-        if (levelRecord.isOpen()) {
-            holder.expand_icon.setImageDrawable(fragment.getResources().getDrawable(R.drawable.minus_icon));
-            holder.hiddenlayout.setVisibility(View.VISIBLE);
-        } else {
-            holder.expand_icon.setImageDrawable(fragment.getResources().getDrawable(R.drawable.plus_circle));
-            holder.hiddenlayout.setVisibility(View.GONE);
+        if(levelRecord.getStatus().equals("Active")){
+            holder.status.setText("Paid");
+            holder.status.setTextColor(Color.parseColor("#1D7F6E"));
+        }else{
+            holder.status.setText("Unpaid");
+            holder.status.setTextColor(Color.parseColor("#F30505"));
         }
+
+        holder.llmain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selected_postion = position;
+                notifyDataSetChanged();
+
+            }
+        });
 
     }
 
@@ -86,7 +118,8 @@ public class LeveRecordsAdapter extends RecyclerView.Adapter<LeveRecordsAdapter.
     }
 
     public class LevelRecordHolder extends RecyclerView.ViewHolder {
-
+        @BindView(R.id.llmain)
+        LinearLayout llmain;
         @BindView(R.id.srno)
         TextView srno;
         @BindView(R.id.userid)

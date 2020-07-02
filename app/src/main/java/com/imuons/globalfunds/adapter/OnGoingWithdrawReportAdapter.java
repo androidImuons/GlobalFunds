@@ -78,6 +78,7 @@ public class OnGoingWithdrawReportAdapter extends RecyclerView.Adapter<OnGoingWi
         holder.n_w_type.setText(penddingWorkingRecord.getNetworkType());
         holder.amount.setText(MyPreference.currency_symbol + penddingWorkingRecord.getAmount());
         holder.txt_date.setText(penddingWorkingRecord.getEntryTime());
+        holder.txt_date.setText(penddingWorkingRecord.getEntryTime().split(" ")[0].replace("-", "/"));
         if (penddingWorkingRecord.getWithdrawType() == 2) {
             holder.txt_withdrwa_type.setText("Working");
         } else if(penddingWorkingRecord.getWithdrawType() == 6){
