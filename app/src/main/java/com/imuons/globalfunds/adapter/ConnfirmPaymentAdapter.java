@@ -99,6 +99,7 @@ public class ConnfirmPaymentAdapter extends RecyclerView.Adapter<ConnfirmPayment
                 holder.txt_withdrwa_btn.setVisibility(View.GONE);
                 holder.txt_withdrwa_note.setVisibility(View.VISIBLE);
                 holder.txt_withdrwa_note.setText("Withdraw already done ");
+                //holder.txt_withdrwa_note.setText("withdraw after 30 days ");
             }
         }else{
             if(record.getType()==1){

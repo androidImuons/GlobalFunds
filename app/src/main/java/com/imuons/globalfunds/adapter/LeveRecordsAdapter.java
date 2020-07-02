@@ -74,7 +74,7 @@ FragmentActivity activity;
         else
             holder.country.setText("");
         holder.fullname.setText(levelRecord.getFullname());
-        holder.userid.setText(levelRecord.getUserId());
+        holder.userid.setText(levelRecord.getDownUserId());
         holder.Investments.setText(String.valueOf(levelRecord.getTotalInvestment()));
         holder.level.setText(String.valueOf(levelRecord.getLevel()));
         holder.registrationDate.setText(levelRecord.getEntryTime().split(" ")[0].replace("-", "/"));

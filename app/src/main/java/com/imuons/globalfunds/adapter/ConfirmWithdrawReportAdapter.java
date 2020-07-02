@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.imuons.globalfunds.R;
 import com.imuons.globalfunds.dataModel.ConfirWithdralList;
+import com.imuons.globalfunds.utils.MyPreference;
 
 import java.util.List;
 
@@ -48,15 +49,20 @@ public class ConfirmWithdrawReportAdapter extends RecyclerView.Adapter<ConfirmWi
         holder.hiddenlayout.setVisibility(View.GONE);
         ConfirWithdralList confirWithdralList = confirWithdralLists.get(position);
         holder.srno.setText(String.valueOf(position+1));
-        holder.amount.setText(String.valueOf(confirWithdralList.getAmount()));
+        holder.amount.setText(MyPreference.currency_symbol+String.valueOf(confirWithdralList.getAmount()));
         holder.n_w_type.setText(confirWithdralList.getNetworkType());
-        holder.txt_withdrwa_type.setText(String.valueOf(confirWithdralList.getWithdrawType()));
+
         holder.txtremark.setText(confirWithdralList.getRemark());
-        if(confirWithdralList.getStatus().equals("Paid")){
-            holder.txtremark.setText("Paid");
+        if(confirWithdralList.getWithdrawType()==2){
+            holder.txt_withdrwa_type.setText("Working withdraw");
+        }else{
+            holder.txt_withdrwa_type.setText("Principle withdraw");
+        }
+        if(confirWithdralList.getRemark().equals("Paid")){
+            holder.txtremark.setText(confirWithdralList.getRemark());
             holder.txtremark.setTextColor(Color.parseColor("#1D7F6E"));
         }else{
-            holder.txtremark.setText("Unpaid");
+            holder.txtremark.setText(confirWithdralList.getRemark());
             holder.txtremark.setTextColor(Color.parseColor("#F30505"));
         }
 

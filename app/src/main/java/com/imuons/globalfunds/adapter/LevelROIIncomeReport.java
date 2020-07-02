@@ -1,5 +1,6 @@
 package com.imuons.globalfunds.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.imuons.globalfunds.R;
 import com.imuons.globalfunds.fragment.LevelROIIncomeFragment;
 import com.imuons.globalfunds.responseModel.LevelROIIncomeRecordModel;
+import com.imuons.globalfunds.utils.MyPreference;
 
 import java.util.List;
 
@@ -25,11 +27,12 @@ import butterknife.ButterKnife;
 public class LevelROIIncomeReport extends RecyclerView.Adapter<LevelROIIncomeReport.ViewHoleder> {
 
     FragmentActivity activity;
+    List<LevelROIIncomeRecordModel> recordModelList;
     private int selected_postion;
 
     public LevelROIIncomeReport(FragmentActivity activity, LevelROIIncomeFragment levelROIIncomeFragment, List<LevelROIIncomeRecordModel> recordModelList) {
         this.activity = activity;
-        this.recordModelList=recordModelList;
+        this.recordModelList = recordModelList;
     }
 
     @NonNull
@@ -58,16 +61,42 @@ public class LevelROIIncomeReport extends RecyclerView.Adapter<LevelROIIncomeRep
             holder.expand_icon.setActivated(false);
             holder.llmain.setActivated(false);
         }
+        setData(holder, recordModelList.get(position), position);
+        holder.llmain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selected_postion = position;
+                notifyDataSetChanged();
+
+            }
+        });
     }
 
+    private void setData(ViewHoleder holder, LevelROIIncomeRecordModel levelROIIncomeRecordModel, int position) {
+        holder.srno.setText(String.valueOf(position + 1));
+
+        holder.txt_user_id.setText(levelROIIncomeRecordModel.getFromUserId());
+        holder.txt_name.setText(levelROIIncomeRecordModel.getFromFullname());
+        holder.txt_amount.setText(MyPreference.currency_symbol+levelROIIncomeRecordModel.getAmount());
+
+        holder.txt_date.setText(levelROIIncomeRecordModel.getEntryTime().split(" ")[0].replace("-", "/"));
+        if (levelROIIncomeRecordModel.getStatus().equals("Paid")) {
+            holder.txt_status.setText(levelROIIncomeRecordModel.getStatus());
+            holder.txt_status.setTextColor(Color.parseColor("#1D7F6E"));
+        } else {
+            holder.txt_status.setText(levelROIIncomeRecordModel.getStatus());
+            holder.txt_status.setTextColor(Color.parseColor("#F30505"));
+        }
+    }
 
     @Override
     public int getItemCount() {
         return recordModelList.size();
     }
-    List<LevelROIIncomeRecordModel> recordModelList;
+
     public void update(List<LevelROIIncomeRecordModel> recordModelList) {
-        this.recordModelList=recordModelList;
+        this.recordModelList = recordModelList;
+        notifyDataSetChanged();
     }
 
     public class ViewHoleder extends RecyclerView.ViewHolder {

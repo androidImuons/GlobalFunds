@@ -63,19 +63,20 @@ public class LevelViewFragment extends Fragment {
     public LevelViewFragment() {
         // Required empty public constructor
     }
+
     public static LevelViewFragment newInstance() {
         LevelViewFragment fragment = new LevelViewFragment();
         return fragment;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_level_view, container, false);
-        ButterKnife.bind(this,view);
-        callGetLevelView();
+        ButterKnife.bind(this, view);
         initUI();
+        callGetLevelView();
+
         return view;
     }
 
@@ -83,7 +84,7 @@ public class LevelViewFragment extends Fragment {
         recycle_view.setHasFixedSize(true);
         recycle_view.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
         records = new ArrayList<>();
-        leveRecordsAdapter = new LeveRecordsAdapter( getActivity(),LevelViewFragment.this, records);
+        leveRecordsAdapter = new LeveRecordsAdapter(getActivity(), LevelViewFragment.this, records);
         recycle_view.setAdapter(leveRecordsAdapter);
 
 
@@ -104,7 +105,7 @@ public class LevelViewFragment extends Fragment {
                     //levelData.get(getselectedlevel.getSelectedItemPosition()).getLevelId();
                     records.clear();
                     leveRecordsAdapter.updateList(records);
-                    callLevelViewApi("0", "10", searchbyid.getText().toString() , String.valueOf(levelData.get(getselectedlevel.getSelectedItemPosition()).getLevelId()));
+                    callLevelViewApi("0", "10", searchbyid.getText().toString(), String.valueOf(levelData.get(getselectedlevel.getSelectedItemPosition()).getLevelId()));
                     return true;
                 }
                 return false;
@@ -114,9 +115,10 @@ public class LevelViewFragment extends Fragment {
         spinner_show.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                records.clear();
+                //                records.clear();
                 leveRecordsAdapter.updateList(records);
-                callLevelViewApi("0", String.valueOf(spinner_show.getSelectedItem()),"" ,  String.valueOf(levelData.get(getselectedlevel.getSelectedItemPosition()).getLevelId()));
+                Log.d("onItemSelected", "--" + levelData.get(getselectedlevel.getSelectedItemPosition()).getLevelId());
+                callLevelViewApi("0", String.valueOf(spinner_show.getSelectedItem()), "", String.valueOf(levelData.get(getselectedlevel.getSelectedItemPosition()).getLevelId()));
             }
 
             @Override
@@ -129,7 +131,8 @@ public class LevelViewFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 records.clear();
                 leveRecordsAdapter.updateList(records);
-                callLevelViewApi("0", String.valueOf(spinner_show.getSelectedItem()),"" ,  String.valueOf(levelData.get(position).getLevelId()));
+                Log.d(" level  onItemSelected", "--" + levelData.get(getselectedlevel.getSelectedItemPosition()).getLevelId());
+                callLevelViewApi("0", String.valueOf(spinner_show.getSelectedItem()), "", String.valueOf(levelData.get(position).getLevelId()));
 
             }
 
@@ -140,17 +143,18 @@ public class LevelViewFragment extends Fragment {
         });
     }
 
-    private void callLevelViewApi(String start, String length, String search , String leveId) {
+    private void callLevelViewApi(String start, String length, String search, String leveId) {
         if (AppCommon.getInstance(getContext()).isConnectingToInternet(getContext())) {
             AppCommon.getInstance(getContext()).setNonTouchableFlags(getActivity());
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(getContext()).getToken());
             final Dialog dialog = ViewUtils.getProgressBar(getActivity());
             Map<String, Object> roiMap = new HashMap<>();
             roiMap.put("start", start);
-            roiMap.put("length", length);
+            roiMap.put("length", 10);
             roiMap.put("level_id", leveId);
             roiMap.put("search[value]", search);
             roiMap.put("search[regex]", false);
+            Log.d("leve req", "----" + roiMap.toString());
             Call call = apiService.levelViewApi(roiMap);
             call.enqueue(new Callback() {
                 @Override
@@ -159,7 +163,7 @@ public class LevelViewFragment extends Fragment {
                     dialog.dismiss();
                     LevelViewResponseModel authResponse = (LevelViewResponseModel) response.body();
                     if (authResponse != null) {
-                        Log.i("packgae list::", new Gson().toJson(authResponse));
+                        Log.i("level reposn", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             setData(authResponse.getData());
                         } else {
@@ -175,7 +179,7 @@ public class LevelViewFragment extends Fragment {
                 public void onFailure(Call call, Throwable t) {
                     dialog.dismiss();
                     AppCommon.getInstance(getActivity()).clearNonTouchableFlags(getActivity());
-                   // Toast.makeText(getActivity(), "Server Error", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(getActivity(), "Server Error", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -205,9 +209,9 @@ public class LevelViewFragment extends Fragment {
                     dialog.dismiss();
                     GetLevelResponse authResponse = (GetLevelResponse) response.body();
                     if (authResponse != null) {
-                        Log.i("packgae list::", new Gson().toJson(authResponse));
+                        Log.i("get level list::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
-                          setSpinner(authResponse.getData());
+                            setSpinner(authResponse.getData());
                         } else {
                             //                            setData(authResponse.getData());
                             Toast.makeText(getActivity(), authResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -234,20 +238,19 @@ public class LevelViewFragment extends Fragment {
 
     private void setSpinner(List<LevelData> data) {
         levelData = data;
-        ArrayAdapter<LevelData> adapter =
-                new ArrayAdapter<LevelData>(getContext(),  android.R.layout.simple_spinner_dropdown_item, data);
-        adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<LevelData> adapter = new ArrayAdapter<LevelData>(getContext(), android.R.layout.simple_spinner_dropdown_item, data);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         getselectedlevel.setAdapter(adapter);
-        if(levelData.size()!= 0)
-        searchSpinnner();
+        if (levelData.size() != 0)
+            searchSpinnner();
     }
 
     public void openRow(int adapterPosition) {
-        if(records.get(adapterPosition).isOpen()) {
+        if (records.get(adapterPosition).isOpen()) {
             records.get(adapterPosition).setOpen(false);
-        }else
+        } else
             records.get(adapterPosition).setOpen(true);
-        leveRecordsAdapter.updateNotify(records ,adapterPosition);
+        leveRecordsAdapter.updateNotify(records, adapterPosition);
     }
 }

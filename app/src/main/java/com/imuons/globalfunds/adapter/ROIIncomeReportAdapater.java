@@ -28,12 +28,12 @@ public class ROIIncomeReportAdapater extends RecyclerView.Adapter<ROIIncomeRepor
 
 
     FragmentActivity activity;
-    private int selected_postion;
     List<RoiIncomeRecord> records;
-    public ROIIncomeReportAdapater(FragmentActivity activity,
-                                   ROIIncomeReportFragment roiIncomeReportFragment, List<RoiIncomeRecord> records) {
+    private int selected_postion;
+
+    public ROIIncomeReportAdapater(FragmentActivity activity, ROIIncomeReportFragment roiIncomeReportFragment, List<RoiIncomeRecord> records) {
         this.activity = activity;
-        this.records=records;
+        this.records = records;
     }
 
     @NonNull
@@ -62,7 +62,7 @@ public class ROIIncomeReportAdapater extends RecyclerView.Adapter<ROIIncomeRepor
             holder.expand_icon.setActivated(false);
             holder.llmain.setActivated(false);
         }
-setData(holder,records.get(position),position);
+        setData(holder, records.get(position), position);
         holder.llmain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,15 +76,15 @@ setData(holder,records.get(position),position);
     private void setData(ViewHoleder holder, RoiIncomeRecord roiIncomeRecord, int position) {
         holder.srno.setText(String.valueOf(position + 1));
         holder.deposit_id.setText(roiIncomeRecord.getPin());
-        holder.amount.setText(MyPreference.currency_symbol+roiIncomeRecord.getOnAmount());
+        holder.amount.setText(MyPreference.currency_symbol + roiIncomeRecord.getOnAmount());
         holder.txt_package.setText(roiIncomeRecord.getName());
         holder.txt_status.setText(roiIncomeRecord.getStatus());
-        holder.txt_roi_amount.setText(MyPreference.currency_symbol+roiIncomeRecord.getAmount());
+        holder.txt_roi_amount.setText(MyPreference.currency_symbol + roiIncomeRecord.getAmount());
         holder.txt_date.setText(roiIncomeRecord.getEntryTime().split(" ")[0].replace("-", "/"));
-        if(roiIncomeRecord.getStatus().equals("Paid")){
+        if (roiIncomeRecord.getStatus().equals("Paid")) {
             holder.txt_status.setText("Paid");
             holder.txt_status.setTextColor(Color.parseColor("#1D7F6E"));
-        }else{
+        } else {
             holder.txt_status.setText("Unpaid");
             holder.txt_status.setTextColor(Color.parseColor("#F30505"));
         }
@@ -97,8 +97,8 @@ setData(holder,records.get(position),position);
         return records.size();
     }
 
-   public void updateList(List<RoiIncomeRecord> records) {
-        this.records=records;
+    public void updateList(List<RoiIncomeRecord> records) {
+        this.records = records;
         notifyDataSetChanged();
     }
 

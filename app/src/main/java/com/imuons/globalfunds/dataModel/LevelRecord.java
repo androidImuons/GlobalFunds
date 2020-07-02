@@ -48,7 +48,7 @@ public class LevelRecord {
     private Integer totalWithdraw;
     @SerializedName("total_profit")
     @Expose
-    private Integer totalProfit;
+    private double totalProfit;
     @SerializedName("level")
     @Expose
     private Integer level;
@@ -175,11 +175,11 @@ public class LevelRecord {
         this.totalWithdraw = totalWithdraw;
     }
 
-    public Integer getTotalProfit() {
+    public double getTotalProfit() {
         return totalProfit;
     }
 
-    public void setTotalProfit(Integer totalProfit) {
+    public void setTotalProfit(double totalProfit) {
         this.totalProfit = totalProfit;
     }
 

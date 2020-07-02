@@ -538,7 +538,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/montserrat_bold"
                                 android:gravity="center"
-                                android:text="Direct\nIncome"
+                                android:text="Direct\nBusiness"
                                 android:textColor="@color/white"
                                 android:textSize="10dp"
                                 ></TextView>
