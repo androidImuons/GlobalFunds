@@ -79,7 +79,6 @@ public class OnGoingPaymentAdapter extends RecyclerView.Adapter<OnGoingPaymentAd
     private void setData(ViewHoleder holder, OnGoingPaymentRecord record, int position) {
         holder.srno.setText(String.valueOf(position + 1));
         holder.txt_address.setText(record.getAddress());
-        holder.txt_date.setText(record.getEntryTime());
         holder.txt_date.setText(record.getEntryTime().split(" ")[0].replace("-", "/"));
         holder.deposit_id.setText(record.getInvoiceId());
         holder.txt_package.setText(record.getPlanName());

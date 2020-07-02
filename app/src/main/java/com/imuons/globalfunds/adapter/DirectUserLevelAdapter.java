@@ -72,8 +72,8 @@ public class DirectUserLevelAdapter extends RecyclerView.Adapter<DirectUserLevel
         holder.userId.setText(directRecord.getUserId());
 
         holder.investment.setText(MyPreference.currency_symbol+directRecord.getTotalInvestment());
-       holder.date.setText(directRecord.getEntryTime());
-        holder.txt_date.setText(directRecord.getEntryTime().split(" ")[0].replace("-", "/"));
+
+        holder.date.setText(directRecord.getEntryTime().split(" ")[0].replace("-", "/"));
         if (directRecord.getTotalInvestment() == 0) {
 
             holder.status.setText("Unpaid");
@@ -117,8 +117,6 @@ public class DirectUserLevelAdapter extends RecyclerView.Adapter<DirectUserLevel
         TextView status;
         @BindView(R.id.txt_address)
         TextView txt_address;
-        @BindView(R.id.txt_date)
-        TextView txt_date;
         @BindView(R.id.deposit_id)
         TextView userId;
         @BindView(R.id.amount)
