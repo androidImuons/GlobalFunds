@@ -16,7 +16,6 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.imuons.globalfunds.R;
-import com.imuons.globalfunds.fragment.DirectUserListFragment;
 import com.imuons.globalfunds.responseModel.DirectRecord;
 import com.imuons.globalfunds.utils.MyPreference;
 
@@ -24,7 +23,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class DirectUserLevelAdapter extends RecyclerView.Adapter<DirectUserLevelAdapter.UserAdapterolder> {
     Fragment fragment;
@@ -139,9 +137,9 @@ public class DirectUserLevelAdapter extends RecyclerView.Adapter<DirectUserLevel
             ButterKnife.bind(this, itemView);
         }
 
-        @OnClick(R.id.expand_icon)
-        void openRow() {
-            ((DirectUserListFragment) fragment).openRow(getAdapterPosition());
-        }
+//        @OnClick(R.id.expand_icon)
+//        void openRow() {
+//            ((DirectUserListFragment) fragment).openRow(getAdapterPosition());
+//        }
     }
 }

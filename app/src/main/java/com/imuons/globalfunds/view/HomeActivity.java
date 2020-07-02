@@ -360,7 +360,7 @@ public class HomeActivity extends AppCompatActivity {
         //three
         ArrayList<String> depostiList = new ArrayList<String>();
         depostiList.add("Make New Payment");
-        depostiList.add("Ongoing Payment");
+        depostiList.add("On Going Payments");
         depostiList.add("Confirmed Payments");
 
         //four

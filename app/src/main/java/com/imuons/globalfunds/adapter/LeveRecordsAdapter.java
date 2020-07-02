@@ -17,13 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.imuons.globalfunds.R;
 import com.imuons.globalfunds.dataModel.LevelRecord;
-import com.imuons.globalfunds.fragment.LevelViewFragment;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class LeveRecordsAdapter extends RecyclerView.Adapter<LeveRecordsAdapter.LevelRecordHolder> {
 
@@ -151,9 +149,9 @@ FragmentActivity activity;
             ButterKnife.bind(this, itemView);
         }
 
-        @OnClick(R.id.expand_icon)
-        void openRow() {
-            ((LevelViewFragment) fragment).openRow(getAdapterPosition());
-        }
+//        @OnClick(R.id.expand_icon)
+//        void openRow() {
+//            ((LevelViewFragment) fragment).openRow(getAdapterPosition());
+//        }
     }
 }

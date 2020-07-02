@@ -104,7 +104,7 @@ public class ProfileFragment extends Fragment {
         tvSponserId.setText(data.getSponser());
         tvSponserName.setText(data.getSponserFullname());
         tvEmail.setText(data.getEmail());
-        tvPhone.setText(data.getMobile());
+        tvPhone.setText("+"+data.getCode()+"-"+data.getMobile());
         if (data.getBtcAddress() == null)
             tvBtcAddress.setText("");
         else
