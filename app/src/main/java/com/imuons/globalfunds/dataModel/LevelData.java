@@ -5,19 +5,21 @@ import androidx.annotation.NonNull;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LevelData {
+import java.io.Serializable;
+
+public class LevelData implements Serializable {
     @SerializedName("level_id")
     @Expose
-    private Integer levelId;
+    private int levelId;
     @SerializedName("level_name")
     @Expose
     private String levelName;
 
-    public Integer getLevelId() {
+    public int getLevelId() {
         return levelId;
     }
 
-    public void setLevelId(Integer levelId) {
+    public void setLevelId(int levelId) {
         this.levelId = levelId;
     }
 

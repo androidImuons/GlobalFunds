@@ -101,6 +101,7 @@ public class MakeWorkingWithdrawalFragment extends Fragment {
                 @Override
                 public void onFailure(Call call, Throwable t) {
                     dialog.dismiss();
+                    Log.d("error for",t.getMessage());
                     AppCommon.getInstance(getActivity()).clearNonTouchableFlags(getActivity());
                     Toast.makeText(getActivity(), "Server Error", Toast.LENGTH_SHORT).show();
                 }
@@ -164,6 +165,7 @@ public class MakeWorkingWithdrawalFragment extends Fragment {
                 @Override
                 public void onFailure(Call call, Throwable t) {
                     dialog.dismiss();
+                    Log.d("error working wi",t.getMessage());
                     AppCommon.getInstance(getActivity()).clearNonTouchableFlags(getActivity());
                     Toast.makeText(getActivity(), "Server Error", Toast.LENGTH_SHORT).show();
                 }

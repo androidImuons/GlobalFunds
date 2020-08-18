@@ -27,10 +27,10 @@ public class PckageDataModel {
     private Integer minHash;
     @SerializedName("max_hash")
     @Expose
-    private Integer maxHash;
+    private Long maxHash;
     @SerializedName("roi")
     @Expose
-    private Integer roi;
+    private double roi;
     @SerializedName("duration")
     @Expose
     private Integer duration;
@@ -143,19 +143,19 @@ public class PckageDataModel {
         this.minHash = minHash;
     }
 
-    public Integer getMaxHash() {
+    public Long getMaxHash() {
         return maxHash;
     }
 
-    public void setMaxHash(Integer maxHash) {
+    public void setMaxHash(Long maxHash) {
         this.maxHash = maxHash;
     }
 
-    public Integer getRoi() {
+    public double getRoi() {
         return roi;
     }
 
-    public void setRoi(Integer roi) {
+    public void setRoi(double roi) {
         this.roi = roi;
     }
 

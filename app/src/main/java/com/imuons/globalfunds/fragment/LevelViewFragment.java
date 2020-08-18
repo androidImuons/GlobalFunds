@@ -178,6 +178,7 @@ public class LevelViewFragment extends Fragment {
                 @Override
                 public void onFailure(Call call, Throwable t) {
                     dialog.dismiss();
+                    Log.i("error ::", t.getMessage());
                     AppCommon.getInstance(getActivity()).clearNonTouchableFlags(getActivity());
                     // Toast.makeText(getActivity(), "Server Error", Toast.LENGTH_SHORT).show();
                 }
@@ -224,6 +225,7 @@ public class LevelViewFragment extends Fragment {
                 @Override
                 public void onFailure(Call call, Throwable t) {
                     dialog.dismiss();
+                    Log.i("error level ::", t.getMessage());
                     AppCommon.getInstance(getActivity()).clearNonTouchableFlags(getActivity());
                     Toast.makeText(getActivity(), "Server Error", Toast.LENGTH_SHORT).show();
                 }

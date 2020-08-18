@@ -120,7 +120,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp20"
                             android:fontFamily="@font/montserrat_regular"
-                            android:text="Monthly Returns -"
+                            android:text="Daily Returns -"
                             android:textColor="@color/white"
                             android:textSize="@dimen/sp18"
                             ></TextView>

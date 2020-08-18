@@ -48,10 +48,10 @@ public class DashBoardDataModel {
     private Integer levelIncomeBalance;
     @SerializedName("roi_income")
     @Expose
-    private Integer roiIncome;
+    private double roiIncome;
     @SerializedName("roi_income_withdraw")
     @Expose
-    private Integer roiIncomeWithdraw;
+    private double roiIncomeWithdraw;
     @SerializedName("roi_income_balance")
     @Expose
     private Integer roiIncomeBalance;
@@ -105,7 +105,7 @@ public class DashBoardDataModel {
     private Integer leadershipWalletBalance;
     @SerializedName("level_income_roi")
     @Expose
-    private Integer levelIncomeRoi;
+    private double levelIncomeRoi;
     @SerializedName("level_income_roi_withdraw")
     @Expose
     private Integer levelIncomeRoiWithdraw;
@@ -284,19 +284,19 @@ public class DashBoardDataModel {
         this.levelIncomeBalance = levelIncomeBalance;
     }
 
-    public Integer getRoiIncome() {
+    public double getRoiIncome() {
         return roiIncome;
     }
 
-    public void setRoiIncome(Integer roiIncome) {
+    public void setRoiIncome(double roiIncome) {
         this.roiIncome = roiIncome;
     }
 
-    public Integer getRoiIncomeWithdraw() {
+    public double getRoiIncomeWithdraw() {
         return roiIncomeWithdraw;
     }
 
-    public void setRoiIncomeWithdraw(Integer roiIncomeWithdraw) {
+    public void setRoiIncomeWithdraw(double roiIncomeWithdraw) {
         this.roiIncomeWithdraw = roiIncomeWithdraw;
     }
 
@@ -436,11 +436,11 @@ public class DashBoardDataModel {
         this.leadershipWalletBalance = leadershipWalletBalance;
     }
 
-    public Integer getLevelIncomeRoi() {
+    public double getLevelIncomeRoi() {
         return levelIncomeRoi;
     }
 
-    public void setLevelIncomeRoi(Integer levelIncomeRoi) {
+    public void setLevelIncomeRoi(double levelIncomeRoi) {
         this.levelIncomeRoi = levelIncomeRoi;
     }
 

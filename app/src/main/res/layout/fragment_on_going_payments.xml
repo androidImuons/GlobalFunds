@@ -100,7 +100,6 @@
                     android:padding="5dp"
                     android:singleLine="true"
                     android:textColor="#1a766e"
-
                     android:textColorHint="#1A766E"
                     android:textSize="12sp" />
 

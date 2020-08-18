@@ -314,13 +314,13 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-    private void setupToolbar() {
-        toolbar = findViewById(R.id.toolbar);
+        private void setupToolbar() {
+            toolbar = findViewById(R.id.toolbar);
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-    }
+        }
 
     void setupDrawerToggle() {
         toolbar.post(new Runnable() {
